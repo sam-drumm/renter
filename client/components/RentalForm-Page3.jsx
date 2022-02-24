@@ -11,7 +11,7 @@ function Users (props) {
 
   return (
     <section className='users'>
-      <p className='title'>Enter a Residental Address</p>
+      <p className='title'>lol</p>
     </section>
   )
 }

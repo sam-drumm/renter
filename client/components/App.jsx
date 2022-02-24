@@ -4,7 +4,7 @@ import { cacheUser } from '../auth0-utils'
 import Nav from './Nav'
 import PingRoutes from './PingRoutes'
 import Registration from './Registration'
-import { SearchBar } from './Home-Page1'
+import { SearchBar } from './Home'
 import { Route } from 'react-router'
 
 function App () {

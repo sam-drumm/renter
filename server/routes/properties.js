@@ -28,8 +28,8 @@ router.get('/', (req, res) => {
 // POST /api/v1/properties/protected
 
 router.post('/', checkJwt, checkAdmin, (req, res) => {
-  const { id, address } = req.body
-  const newProperty = { id, address }
+  const { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship } = req.body
+  const newProperty = { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship }
   db.addProperty(newProperty)
     .then((property) => {
       res.status(201).json({ property })

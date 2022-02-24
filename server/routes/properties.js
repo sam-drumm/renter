@@ -6,7 +6,7 @@ const db = require('../db/properties')
 const router = express.Router()
 
 // middleware for checking permissions (authorization)
-const checkAdmin = jwtAuthz(['read:my_private_route'], { customScopeKey: 'permissions' })
+const checkAdmin = jwtAuthz(['create:property'], { customScopeKey: 'permissions' })
 
 // GET /api/v1/properties
 router.get('/', (req, res) => {
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     })
 })
 
-// POST /api/v1/properties
+// POST /api/v1/properties/protected
 
 router.post('/', checkJwt, checkAdmin, (req, res) => {
   const { id, address } = req.body

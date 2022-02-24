@@ -6,7 +6,6 @@ const db = require('../db/users')
 const router = express.Router()
 
 // middleware for checking permissions (authorization)
-
 const checkAdmin = jwtAuthz(['read:my_private_route'], { customScopeKey: 'permissions' })
 
 // POST /api/v1/users/protected

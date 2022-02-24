@@ -12,7 +12,7 @@ function Users (props) {
   return (
     <section className='users'>
       <p className='title'>Registered users in the database</p>
-      <table>
+      {/* <table>
         <thead>
           <tr>
             <th>
@@ -36,18 +36,12 @@ function Users (props) {
                 {user.auth0Id}
               </td>
               <td>
-                {user.name}
-              </td>
-              <td>
-                {user.email}
-              </td>
-              <td>
                 {user.description}
               </td>
             </tr>
           )}
         </tbody>
-      </table>
+      </table> */}
     </section>
   )
 }

@@ -19,14 +19,12 @@ function Users (props) {
               auth0Id
             </th>
             <th>
-              name
+              nickname
             </th>
             <th>
               email
             </th>
-            <th>
-              description
-            </th>
+
           </tr>
         </thead>
         <tbody>
@@ -36,14 +34,12 @@ function Users (props) {
                 {user.auth0Id}
               </td>
               <td>
-                {user.name}
+                {user.nickname}
               </td>
               <td>
                 {user.email}
               </td>
-              <td>
-                {user.description}
-              </td>
+
             </tr>
           )}
         </tbody>

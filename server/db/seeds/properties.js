@@ -1,30 +1,20 @@
-{
-    id: 1,
-    property_id: "propertyId",
-    address,
-    rooms_1: rooms1,
-    rooms_2: rooms2,
-    rent_total: rentTotal,
-    rent_utilities: rentUtilities,
-    year_1: year1,
-    year_2: year2,
-    property_managed_by: propertyManagedBy,
-    rent_increase_frequency: rentIncreaseFrequency,
-    ave_increase: aveIncrease,
-    heat_pump: heatPump,
-    insulation,
-    fridge,
-    curtains,
-    oven,
-    smoke_alarm: smokeAlarm,
-    fire_extinguisher: fireExtinguisher,
-    pets_ok: petsOk,
-    smoking_ok: smokingOk,
-    subletting_allowed: sublettingAllowed,
-    responsive_repairs: responsiveRepairs,
-    rental_management: rentalManagement,
-    repairs,
-    sufficient_notice: sufficientNotice,
-    rate_relationship: rateRelationship
 
+exports.seed = function (knex) {
+  return knex('properties').del()
+    .then(function () {
+      return knex('properties').insert([
+        {
+          id: 1,
+          address: '100 Queen Street, Auckland Central, Auckland'
+        },
+        {
+          id: 2,
+          address: '200 Queen Street, Auckland Central, Auckland'
+        },
+        {
+          id: 3,
+          address: '300 Queen Street, Auckland Central, Auckland'
+        }
+      ])
+    })
 }

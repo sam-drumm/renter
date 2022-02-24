@@ -4,6 +4,7 @@ import { cacheUser } from '../auth0-utils'
 import Nav from './Nav'
 import PingRoutes from './PingRoutes'
 import Registration from './Registration'
+import RentalForm from './RentalForm'
 import Users from './Users'
 import { Route } from 'react-router'
 
@@ -16,6 +17,8 @@ function App () {
       <Route exact path='/' component={Users} />
       <Route exact path='/' component={PingRoutes} />
       <Route path='/register' component={Registration} />
+      {/* <Route path='/rentalform' component={RentalForm} /> */}
+
     </div>
   )
 }

@@ -7,7 +7,7 @@ exports.up = function (knex) {
     table.integer('rooms_1')
     table.integer('rooms_2')
     table.integer('rent_total')
-    table.string('rent_utilities')
+    table.boolean('rent_utilities')
     table.integer('year_1')
     table.integer('year_2')
     table.string('property_managed_by')

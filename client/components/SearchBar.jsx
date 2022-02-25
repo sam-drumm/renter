@@ -27,6 +27,10 @@ const handleFilter = (event) => {
     setWordEntered("")
   }
 
+  function handleClick(value) {
+  console.log(value)
+  }
+
   return (
     <div className='search'>
       <div className='searchInputs'>
@@ -41,7 +45,7 @@ const handleFilter = (event) => {
     {filteredData.length != 0 && (
       <div className='dataResult'>
         {filteredData.slice(0, 5).map((value, key) => {
-          return (<a className='dataItem' href="#" key={value.id}><p>{value.address}</p></a>
+          return (<a className='dataItem' href="#" key={value.id} onClick={()=> handleClick(value) }><p>{value.address}</p></a>
         )
         //used slice so that when the api fetches addresses, it will show the first 5 matches
         })}

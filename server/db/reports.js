@@ -5,6 +5,8 @@ function getReports (db = connection) {
     .select()
 }
 
+/// address from properties
+
 function addReport (newReport, db = connection) {
   const { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship } = newReport
   return db('reports')

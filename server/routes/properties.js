@@ -6,7 +6,7 @@ const db = require('../db/properties')
 const router = express.Router()
 
 // middleware for checking permissions (authorization)
-const checkAdmin = jwtAuthz(['create:property'], { customScopeKey: 'permissions' })
+const checkAdmin = jwtAuthz(['create:report'], { customScopeKey: 'permissions' })
 
 // GET /api/v1/properties
 router.get('/', (req, res) => {
@@ -28,8 +28,8 @@ router.get('/', (req, res) => {
 // POST /api/v1/properties/protected
 
 router.post('/', checkJwt, checkAdmin, (req, res) => {
-  const { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship } = req.body
-  const newProperty = { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship }
+  const { propertyId, address } = req.body
+  const newProperty = { propertyId, address }
   db.addProperty(newProperty)
     .then((property) => {
       res.status(201).json({ property })

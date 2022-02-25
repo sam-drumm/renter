@@ -1,6 +1,6 @@
 import React from 'react'
-import './SearchBar.css'
-import HouseIcon from '@mui/icons-material/House'
+// import './SearchBar.css'
+// import HouseIcon from '@mui/icons-material/House'
 
 // function Users (props) {
 //   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ export function SearchBar (placeholder, data) {
     <div className='search'>
       <div className='searchInputs'>
         <input type='text' placeholder={'Enter a Residential Address'}/>
-        <div className='searchIcon'> <HouseIcon /></div>
+        {/* <div className='searchIcon'> <HouseIcon /></div> */}
       </div>
       <div className='dataResults'></div>
     </div>

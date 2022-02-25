@@ -2,15 +2,12 @@ const connection = require('./connection')
 
 function getUsers (db = connection) {
   return db('users')
-    .select('id',
-      'auth0_id as auth0Id',
-      'nickname',
-      'email')
+    .select()
 }
 
 function addUser (input, db = connection) {
-  const { auth0Id, nickname, email } = input
-  const user = { auth0_id: auth0Id, nickname, email }
+  const { auth0Id, email } = input
+  const user = { auth0_id: auth0Id, email }
   return db('users')
     .insert(user)
 }

@@ -21,6 +21,7 @@ export function SearchBar ({ placeholder, data }) {
       setFilteredData(newFilter)
     }
   }
+
   const clearInput = () => {
     setFilteredData([])
     setWordEntered('')
@@ -41,13 +42,20 @@ export function SearchBar ({ placeholder, data }) {
           }
         </div>
       </div>
-      {filteredData.length != 0 && (
+      {filteredData.length !== 0 && (
         <div className='dataResult'>
-          {filteredData.slice(0, 5).map((value, key) => {
-            return (<a className='dataItem' href="#" key={value.id} onClick={() => handleClick(value) }><p>{value.address}</p></a>
-            )
+          {filteredData.slice(0, 5).map(value =>
+            <a
+              className='dataItem'
+              href="#"
+              key={value.id}
+              onClick={() => handleClick(value) }
+            >
+              <p>{value.address}</p>
+            </a>
+
             // used slice so that when the api fetches addresses, it will show the first 5 matches
-          })}
+          )}
         </div>
       )}
     </div>

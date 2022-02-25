@@ -1,24 +1,21 @@
 import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
+import { getAddresses } from '../apis/addresses'
 
-export function SearchBar ({ placeholder, data }) {
+export function SearchBar ({ placeholder }) {
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState('')
 
-  const handleFilter = (event) => {
+  const handleFilter = async (event) => {
     const searchWord = event.target.value
     // address typed in by the user in search bar
     setWordEntered(searchWord)
-
-    const newFilter = data.filter((value) => {
-      return value.address.toLowerCase().includes(searchWord.toLowerCase())
-      // filter data for addresses that match the one typed by the user
-    })
+    const addresses = await getAddresses(searchWord)
     if (searchWord === '') {
       setFilteredData([])
     } else {
-      setFilteredData(newFilter)
+      setFilteredData(addresses)
     }
   }
 

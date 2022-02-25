@@ -27,7 +27,7 @@ function Nav () {
 
   return (
     <nav>
-      <h1 className='logo'>Full-stack Boilerplate with Auth0</h1>
+      <h1 className='logo'>Renter</h1>
       <section className='nav-item'>
         <IfAuthenticated>
           <p>Hello, {user.name} {user.roles ? `(${user.roles})` : null}</p>
@@ -37,7 +37,6 @@ function Nav () {
         </IfAuthenticated>
         <IfNotAuthenticated>
           {/* <section className='nav-item'> */}
-          <p>Hello, guest</p>
           <section className='sign'>
             <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
             <a href='/' onClick={handleRegister} className='nav-link'>Register</a>

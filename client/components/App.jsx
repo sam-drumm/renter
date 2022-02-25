@@ -1,22 +1,33 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
+import SearchBar from './SearchBar'
+import { Route } from 'react-router'
 import Nav from './Nav'
 import PingRoutes from './PingRoutes'
 import Registration from './Registration'
-import Users from './Users'
-import { Route } from 'react-router'
+// import RentalForm from './RentalForm'
+// import Users from './Users'
 
 function App () {
   cacheUser(useAuth0)
 
+  const addressData = [ 
+    {id: 1, address: "8c Macaulay Street, Eden Terrace, Auckland"},
+    {id: 2, address: "12 Morgan Street, Newmarket, Auckland"},
+    {id: 3, address: "11 Chatfield Place, Remuera, Auckland"},
+    {id: 4, address: "28 Kingsview Road, Mount Eden, Auckland"}]
+
   return (
     <div className='app'>
       <Route exact path='/' component={Nav} />
-      <Route exact path='/' component={Users} />
       <Route exact path='/' component={PingRoutes} />
       <Route path='/register' component={Registration} />
+      {/* <Route path='/rentalform' component={RentalForm} /> */}
+
+      <SearchBar placeholder='Start by typing the address of the rental property...' data={addressData}/>
     </div>
+
   )
 }
 

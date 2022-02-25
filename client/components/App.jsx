@@ -12,12 +12,6 @@ import Registration from './Registration'
 function App () {
   cacheUser(useAuth0)
 
-  const addressData = [ 
-    {id: 1, address: "8c Macaulay Street, Eden Terrace, Auckland"},
-    {id: 2, address: "12 Morgan Street, Newmarket, Auckland"},
-    {id: 3, address: "11 Chatfield Place, Remuera, Auckland"},
-    {id: 4, address: "28 Kingsview Road, Mount Eden, Auckland"}]
-
   return (
     <div className='app'>
       <Route exact path='/' component={Nav} />
@@ -25,7 +19,7 @@ function App () {
       <Route path='/register' component={Registration} />
       {/* <Route path='/rentalform' component={RentalForm} /> */}
 
-      <SearchBar placeholder='Start by typing the address of the rental property...' data={addressData}/>
+      <SearchBar placeholder='Start by typing the address of the rental property...' />
     </div>
 
   )

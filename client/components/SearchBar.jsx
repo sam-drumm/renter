@@ -34,11 +34,16 @@ export function SearchBar ({ placeholder, data }) {
   return (
     <div className='search'>
       <div className='searchInputs'>
-        <input type='text' placeholder={placeholder} value={wordEntered} onChange={handleFilter}/>
+        <input
+          type='text'
+          placeholder={placeholder}
+          value={wordEntered}
+          onChange={handleFilter}
+        />
         <div className='searchIcon'>
           {filteredData.length === 0
             ? (<SearchIcon />)
-            : (<CloseIcon id="clearBtn" onClick={clearInput}/>)
+            : (<CloseIcon id="clearBtn" onClick={clearInput} />)
           }
         </div>
       </div>
@@ -49,7 +54,7 @@ export function SearchBar ({ placeholder, data }) {
               className='dataItem'
               href="#"
               key={value.id}
-              onClick={() => handleClick(value) }
+              onClick={() => handleClick(value)}
             >
               <p>{value.address}</p>
             </a>

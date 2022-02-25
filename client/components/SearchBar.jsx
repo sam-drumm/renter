@@ -25,7 +25,9 @@ export function SearchBar ({ placeholder }) {
   }
 
   function handleClick (value) {
-    console.log(value)
+    setFilteredData([])
+    console.log(`selected address: ${value}`)
+    console.log("not it's time to navigate to another page")
   }
 
   return (

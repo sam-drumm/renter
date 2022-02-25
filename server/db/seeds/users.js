@@ -5,9 +5,12 @@ exports.seed = function (knex) {
         {
           id: 1,
           auth0_id: 'auth0|61414f84d35ac900717bc280',
-          name: 'kelmarna',
-          email: 'kelmarna@email.nz',
-          description: 'the awesome developer'
+          email: 'kelmarna@email.nz'
+        },
+        {
+          id: 2,
+          auth0_id: 'auth0|61414f84d35ac900717bc282',
+          email: 'sammy@example.com'
         }
       ])
     })

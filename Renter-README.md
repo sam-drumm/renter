@@ -53,6 +53,7 @@ Features should be named something like `feature/searchBar`.  The first half (fe
     - Dreamfest (Database stuff): https://github.com/harakeke-2022/dreamfest
     - Pupparazzi (Writing user stories): https://github.com/harakeke-2022/pupparazzi
     - Charlotte's Web (Routes layout for front-end & back-end liaison): https://github.com/harakeke-2022/charlottes-web-log-api
+    - Search Bar auto complete feature: https://www.youtube.com/watch?v=x7niho285qs; https://github.com/machadop1407/React-Search-Bar/tree/main/search-bar-code
 
 
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import './SearchBar.css'
 import HouseIcon from '@mui/icons-material/House'
 
 export function SearchBar (placeholder, data) {

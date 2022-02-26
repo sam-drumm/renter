@@ -26,11 +26,10 @@ exports.seed = function (knex) {
           pets_ok: true,
           smoking_ok: true,
           subletting_allowed: false,
-          responsive_repairs: 1,
-          rental_management: 2,
+          responsive_repairs: 'Very responsive',
           repairs: 'Landlord',
-          sufficient_notice: 2,
-          rate_relationship: 3
+          sufficient_notice: 'Sometimes',
+          rate_relationship: 'Neutral'
 
         }
 

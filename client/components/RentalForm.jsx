@@ -1,9 +1,7 @@
-import React, { useState} from 'react'
-import { getReports, postReports } from '../apis/reports'
+import React, { useState } from 'react'
+import { postReports } from '../apis/reports'
 
-function rentalForm() {
-
-
+function rentalForm () {
   const initialState = {
     addressAPI: '',
     rooms1: '-1',
@@ -30,8 +28,6 @@ function rentalForm() {
     notice: '-1',
     relationship: '-1'
 
-
-
   }
 
   const [form, setForm] = useState(initialState)
@@ -43,12 +39,11 @@ function rentalForm() {
     })
   }
 
-  function handleSubmit(event) {
+  function handleSubmit (event) {
     event.preventDefault()
 
     postReports(form)
       .then(() => {
-
         return null
       })
       .catch((err) => {
@@ -94,11 +89,11 @@ function rentalForm() {
           </select>
           <label>
               in total.
-            </label>
+          </label>
 
           <label>
             <p></p>
-            Rent paid in total $
+            Rent paid in total per week $
             <input cols='10' className='' name='rentTotal' type="number" onChange={handleChange} value={form.rentTotal} />
           </label>
           <label>
@@ -257,6 +252,11 @@ function rentalForm() {
 
       </form>
       <button className='button' onClick={handleSubmit}>Submit</button>
+      <div>
+        <h3>Disclaimer:</h3>
+        <p>Length of tenancy is for internal use only to verify that the data remains up to date and within the last 5 years</p>
+      </div>
+
     </div>
 
   )

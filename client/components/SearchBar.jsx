@@ -3,7 +3,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
 import { getAddresses } from '../apis/addresses'
 
-export function SearchBar ({ placeholder }) {
+export function SearchBar () {
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState('')
 
@@ -35,7 +35,7 @@ export function SearchBar ({ placeholder }) {
       <div className='searchInputs'>
         <input
           type='text'
-          placeholder={placeholder}
+          placeholder='Start by typing the address of the rental property...'
           value={wordEntered}
           onChange={handleFilter}
         />

@@ -23,7 +23,6 @@ function App () {
       {/* <Route path='/rentalform' component={RentalForm} /> */}
       <Route path='/reports' component={DataResponsePage} />
       <Route path='/rentalform' component={RentalForm} />
-      <SearchBar placeholder='Start by typing the address of the rental property...' />
     </div>
 
   )

@@ -111,20 +111,24 @@ a {
 .searchInputs {
   margin: top 105px;
   display: flex;
+  border: 1px solid #CBD5E0;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .search input {
-  background-color: white;
+  background: none;
+  border: none;
   font-size: 18px;
   padding: 15px;
   height: 30px;
-  width: 400px;
+  width: 854px;
 }
 
 .searchIcon {
   height: 60px;
   width: 50px;
-  background-color: rgb(255, 255, 255);
+  background-color: none;
   color: #148FE8;
   display: grid;
   place-items: center;

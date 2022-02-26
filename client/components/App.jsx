@@ -6,7 +6,7 @@ import { Route } from 'react-router'
 import Nav from './Nav'
 import PingRoutes from './PingRoutes'
 import Registration from './Registration'
-// import RentalForm from './RentalForm'
+import RentalForm from './RentalForm'
 // import Users from './Users'
 
 function App () {
@@ -17,9 +17,9 @@ function App () {
       <Route exact path='/' component={Nav} />
       <Route exact path='/' component={PingRoutes} />
       <Route path='/register' component={Registration} />
-      {/* <Route path='/rentalform' component={RentalForm} /> */}
+      <Route path='/rentalform' component={RentalForm} />
 
-      <SearchBar />
+      {/* <SearchBar /> */}
     </div>
 
   )

@@ -1,4 +1,4 @@
-import { getProperties } from '../apis/properties'
+import { getProperties, addProperties } from '../apis/properties'
 
 export const SET_PROPERTY = 'SET_PROPERTY'
 export const SET_PROPERTIES = 'SET_PROPERTIES'
@@ -37,6 +37,20 @@ export function fetchProperties () {
       .then(properties => {
         dispatch(setProperties(properties))
         return null
+      })
+  }
+}
+
+export function addProperty (property, token) {
+  return dispatch => {
+    return addProperties(property, token)
+      .then(property => {
+        console.log('this is how your data:property looks in action', property)
+        dispatch(setProperty(property))
+        return null
+      })
+      .catch(err => {
+        console.error(err)
       })
   }
 }

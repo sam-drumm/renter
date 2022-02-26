@@ -1,12 +1,12 @@
 const express = require('express')
-const jwtAuthz = require('express-jwt-authz')
+// const jwtAuthz = require('express-jwt-authz')
 const { checkJwt } = require('../auth0')
 
 const db = require('../db/reports')
 const router = express.Router()
 
 // middleware for checking permissions (authorization)
-const checkAdmin = jwtAuthz(['create:report'], { customScopeKey: 'permissions' })
+// const checkAdmin = jwtAuthz(['create:record'], { customScopeKey: 'permissions' })
 
 // GET /api/v1/reports
 router.get('/', (req, res) => {
@@ -26,9 +26,11 @@ router.get('/', (req, res) => {
 })
 
 // POST /api/v1/reports
-router.post('/', checkJwt, checkAdmin, (req, res) => {
-  const { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship } = req.body
-  const newReport = { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship }
+// need to address this ()
+
+router.post('/', checkJwt, (req, res) => {
+  const { addressAPI, rooms1, rooms2, rentTotal, utilities, year1, year2, managedBy, rentIncrease, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, pets, smoking, subletting, repairsResponsive, repairsConducted, notice, relationship } = req.body
+  const newReport = { addressAPI, rooms1, rooms2, rentTotal, utilities, year1, year2, managedBy, rentIncrease, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, pets, smoking, subletting, repairsResponsive, repairsConducted, notice, relationship }
   db.addReport(newReport)
     .then((report) => {
       res.status(201).json({ report })

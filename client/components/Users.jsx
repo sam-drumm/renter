@@ -24,6 +24,9 @@ function Users (props) {
             <th>
               email
             </th>
+            <th>
+              description
+            </th>
 
           </tr>
         </thead>
@@ -31,13 +34,16 @@ function Users (props) {
           {users.map(user =>
             <tr key={user.id}>
               <td>
-                {user.auth0Id}
+                {user.auth0_id}
               </td>
               <td>
                 {user.nickname}
               </td>
               <td>
                 {user.email}
+              </td>
+              <td>
+                {user.description}
               </td>
 
             </tr>

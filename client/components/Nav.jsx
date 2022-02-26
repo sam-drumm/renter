@@ -30,7 +30,7 @@ function Nav () {
       <h1 className='logo'>Renter</h1>
       <section className='nav-item'>
         <IfAuthenticated>
-          <p>Hello, {user.name} {user.roles ? `(${user.roles})` : null}</p>
+          <p>Hey {user.nickname}! {user.roles ? `(${user.roles})` : null}</p>
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>

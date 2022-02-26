@@ -6,7 +6,7 @@ import { Route } from 'react-router'
 import Nav from './Nav'
 import PingRoutes from './PingRoutes'
 import Registration from './Registration'
-// import RentalForm from './RentalForm'
+import RentalForm from './RentalForm'
 import Users from './Users'
 import DataResponsePage from './DataResponsePage'
 
@@ -21,7 +21,7 @@ function App () {
       <Route exact path='/users' component={Users} />
       <Route path='/register' component={Registration} />
       <Route path='/reports' component={DataResponsePage} />
-
+      <Route path='/rentalform' component={RentalForm} />
     </div>
 
   )

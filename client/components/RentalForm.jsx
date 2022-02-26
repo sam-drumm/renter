@@ -6,6 +6,7 @@ import { useHistory } from 'react-router'
 
 function RentalForm () {
   const property = useSelector(state => state.property)
+  const token = useSelector(state => state.user.token)
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -53,7 +54,7 @@ function RentalForm () {
     event.preventDefault()
     try {
       console.log('hey sam, here is your form for dispatch', form)
-      dispatch(addProperty(form))
+      dispatch(addProperty(form, token))
       history.push('/')
     } catch (err) {
       console.error(err)

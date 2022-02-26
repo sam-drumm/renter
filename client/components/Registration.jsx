@@ -9,15 +9,15 @@ function Registration () {
 
   const [form, setForm] = useState({
     auth0Id: '',
-    name: '',
     email: '',
+    nickname: '',
     description: ''
   })
 
   useEffect(() => {
     setForm({
       auth0Id: user.auth0Id,
-      name: user.name,
+      nickname: user.nickname,
       email: user.email,
       description: user.description
     })
@@ -52,6 +52,22 @@ function Registration () {
           value={form.auth0Id}
           onChange={handleChange}
           disabled={true}
+          // hidden={true}
+        ></input>
+
+        <label htmlFor='email' >Email</label>
+        <input
+          name='email'
+          value={form.email}
+          onChange={handleChange}
+          disabled={true}
+        ></input>
+
+        <label htmlFor='nickname' >Nickname</label>
+        <input
+          name='nickname'
+          value={form.nickname}
+          onChange={handleChange}
         ></input>
 
         <label htmlFor='description' >Description</label>
@@ -61,6 +77,7 @@ function Registration () {
           onChange={handleChange}
           cols={3}
         ></textarea>
+
         <button
           type='button'
           onClick={handleClick}

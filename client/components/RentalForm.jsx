@@ -37,7 +37,9 @@ function RentalForm () {
   })
 
   useEffect(() => {
-    setForm({})
+    setForm({
+      addressAPI: property.addressAPI
+    })
   }, [property])
 
   const handleChange = (event) => {
@@ -50,8 +52,8 @@ function RentalForm () {
   async function handleSubmit (event) {
     event.preventDefault()
     try {
+      console.log('hey sam, here is your form for dispatch', form)
       dispatch(addProperty(form))
-      console.log('hey sam, here is your form', form)
       history.push('/')
     } catch (err) {
       console.error(err)
@@ -65,10 +67,11 @@ function RentalForm () {
       <p>Please fill in this form to add your renting experience to the site</p>
       <form>
         <fieldset>
+          <label htmlFor='auth0Id'>auth0Id</label>
           <label>
             Address
           </label>
-          <input type="text" placeholder="address api" value={form.addressAPI} onChange={handleChange}/>
+          <input type="text" placeholder="address api" value={form.addressAPI} onChange={handleChange} disabled={true}/>
         </fieldset>
         <fieldset>
           <h2>Rental details</h2>

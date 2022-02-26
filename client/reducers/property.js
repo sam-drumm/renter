@@ -1,7 +1,8 @@
 import { SET_PROPERTY, CLEAR_PROPERTY } from '../actions/property'
 
 const emptyProperty = {
-  addressAPI: '',
+  id: null,
+  addressAPI: null,
   rooms1: '',
   rooms2: '',
   rentTotal: '',
@@ -27,7 +28,7 @@ const emptyProperty = {
   relationship: '-1'
 }
 
-export default function user (state = emptyProperty, action) {
+export default function property (state = emptyProperty, action) {
   switch (action.type) {
     case SET_PROPERTY:
       return action.property

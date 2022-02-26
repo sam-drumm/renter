@@ -41,10 +41,11 @@ export function fetchProperties () {
   }
 }
 
-export function addProperty (form) {
+export function addProperty (property) {
   return dispatch => {
-    return addProperties(form)
+    return addProperties(property)
       .then(property => {
+        console.log('this is how your data:property looks in action', property)
         dispatch(setProperty(property))
         return null
       })

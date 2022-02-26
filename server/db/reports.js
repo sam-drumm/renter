@@ -46,7 +46,6 @@ function addReport (newReport, db = connection) {
   const { addressAPI, rooms1, rooms2, rentTotal, utilities, year1, year2, managedBy, rentIncrease, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, pets, smoking, subletting, repairsResponsive, repairsConducted, notice, relationship } = newReport
   return db('reports')
     .insert({
-      id: 1,
       address_API: addressAPI,
       rooms_1: rooms1,
       rooms_2: rooms2,

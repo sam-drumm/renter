@@ -32,7 +32,6 @@ exports.seed = function (knex) {
           repairs_conducted: 'Not at all',
           sufficient_notice: 2,
           rate_relationship: 3
-
         }
 
       ])

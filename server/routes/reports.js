@@ -26,9 +26,11 @@ router.get('/', (req, res) => {
 })
 
 // POST /api/v1/reports
-router.post('/', checkJwt, checkAdmin, (req, res) => {
-  const { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship } = req.body
-  const newReport = { propertyId, address, rooms1, rooms2, rentTotal, rentUtilities, year1, year2, propertyManagedBy, rentIncreaseFrequency, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, petsOk, smokingOk, sublettingAllowed, responsiveRepairs, rentalManagement, repairs, sufficientNotice, rateRelationship }
+// need to address this (checkJwt, checkAdmin)
+
+router.post('/', (req, res) => {
+  const { addressAPI, rooms1, rooms2, rentTotal, utilities, year1, year2, managedBy, rentIncrease, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, pets, smoking, subletting, repairsResponsive, repairsConducted, notice, relationship } = req.body
+  const newReport = { addressAPI, rooms1, rooms2, rentTotal, utilities, year1, year2, managedBy, rentIncrease, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, pets, smoking, subletting, repairsResponsive, repairsConducted, notice, relationship }
   db.addReport(newReport)
     .then((report) => {
       res.status(201).json({ report })

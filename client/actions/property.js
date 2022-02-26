@@ -1,4 +1,4 @@
-import { getProperties } from '../apis/properties'
+import { getProperties, addProperties } from '../apis/properties'
 
 export const SET_PROPERTY = 'SET_PROPERTY'
 export const SET_PROPERTIES = 'SET_PROPERTIES'
@@ -37,6 +37,19 @@ export function fetchProperties () {
       .then(properties => {
         dispatch(setProperties(properties))
         return null
+      })
+  }
+}
+
+export function addProperty (form) {
+  return dispatch => {
+    return addProperties(form)
+      .then(property => {
+        dispatch(setProperty(property))
+        return null
+      })
+      .catch(err => {
+        console.error(err)
       })
   }
 }

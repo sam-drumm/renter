@@ -103,12 +103,12 @@ function RentalForm () {
 
           <label>
             <p></p>
-            Rent paid in total per week $
+            Total rent paid per week $
             <input cols='10' className='' name='rentTotal' type="number" onChange={handleChange} value={form.rentTotal} />
           </label>
           <label>
             <p></p>
-            Did rent include utilities?
+            Did rent include utilities? (e.g. water, power, internet)
           </label>
           <select className='' name='utilities' onChange={handleChange} value={form.utilities}>
             <option value="-1">---</option>

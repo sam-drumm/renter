@@ -22,39 +22,58 @@ function DataResponsePage (props) {
             <div key={property.id}>
 
               <p>
-                {property.address}
+              Rental address:  {property.address}
               </p>
-              {property.rooms_1}
+              <p>
+             The tenant rented: {property.rooms_1} out of
 
-              {property.rooms_2}
-
-              {property.rent_total}
-
-              {property.rent_utilities}
-
-              {property.property_managed_by}
-
-              {property.rent_increase_frequency}
-
-              {property.ave_increase}
-
-              <p> {property.heat_pump ? 'true' : 'false'}</p>
-
-              {property.insulation ? 'true' : 'false'}
-
-              {property.fridge ? 'true' : 'false'}
-
-              {property.curtains ? 'true' : 'false'}
-
-              {property.oven ? 'true' : 'false'}
-
-              {property.smoke_alarm ? 'true' : 'false'}
-
-              {property.fire_extinguisher ? 'true' : 'false'}
-
-              {property.pets_ok ? 'true' : 'false'}
-
-              {property.smoking_ok ? 'true' : 'false'}
+                {property.rooms_2} rooms in total.
+              </p>
+              <p>
+              Total rent paid per week:  {property.rent_total}
+              </p>
+              <p>
+              Were utilities included in the rent? (e.g. water, power, internet)  {property.rent_utilities}
+              </p>
+              <p>
+              The rental property was managed by:  {property.property_managed_by}
+              </p>
+              <p>
+             The rent increased: {property.rent_increase_frequency}
+              </p>
+              <p>
+            The average rent increase was:  {property.ave_increase}
+              </p>
+              <h2>Amentities</h2>
+              <ul>
+                <li>
+                 - Heat pump {property.heat_pump ? 'Yes' : 'No'}
+                </li>
+                <li>
+              - Insulation  {property.insulation ? 'Yes' : 'No'}
+                </li>
+                <li>
+               - Fridge   {property.fridge ? 'Yes' : 'No'}
+                </li>
+                <li>
+                 - Curtains in the bedroom {property.curtains ? 'Yes' : 'No'}
+                </li>
+                <li>
+                  {property.oven ? 'Yes' : 'No'}
+                </li>
+                <li>
+                  {property.smoke_alarm ? 'Yes' : 'No'}
+                </li>
+                <li>
+                  {property.fire_extinguisher ? 'Yes' : 'No'}
+                </li>
+                <li>
+                  {property.pets_ok ? 'Yes' : 'No'}
+                </li>
+                <li>
+                  {property.smoking_ok ? 'Yes' : 'No'}
+                </li>
+              </ul>
 
               {property.subletting_allowed}
 

@@ -4,6 +4,7 @@ const path = require('path')
 const usersRoutes = require('./routes/users')
 const propRoutes = require('./routes/properties')
 const reportRoutes = require('./routes/reports')
+const addressRoutes = require('./routes/addresses')
 
 const server = express()
 
@@ -13,6 +14,7 @@ server.use(express.static(path.join(__dirname, 'public')))
 server.use('/api/v1/users', usersRoutes)
 server.use('/api/v1/properties', propRoutes)
 server.use('/api/v1/reports', reportRoutes)
+server.use('/api/v1/addresses', addressRoutes)
 
 // Redirect all of our server requests to /index.html
 server.get('*', (req, res) => {

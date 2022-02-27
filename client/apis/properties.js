@@ -2,8 +2,8 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getProperties () {
-  return request.get(rootUrl + '/reports')
+export function getProperties (address) {
+  return request.get(rootUrl + '/reports?address=' + address)
     .then(res => {
       return res.body.report
     })

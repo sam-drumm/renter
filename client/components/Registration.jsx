@@ -10,16 +10,15 @@ function Registration () {
   const [form, setForm] = useState({
     auth0Id: '',
     email: '',
-    nickname: '',
-    description: ''
+    nickname: ''
   })
 
   useEffect(() => {
     setForm({
       auth0Id: user.auth0Id,
       nickname: user.nickname,
-      email: user.email,
-      description: user.description
+      email: user.email
+
     })
   }, [user])
 
@@ -69,14 +68,6 @@ function Registration () {
           value={form.nickname}
           onChange={handleChange}
         ></input>
-
-        <label htmlFor='description' >Description</label>
-        <textarea
-          name='description'
-          value={form.description}
-          onChange={handleChange}
-          cols={3}
-        ></textarea>
 
         <button
           type='button'

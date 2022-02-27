@@ -9,7 +9,8 @@ export function getProperties () {
     })
 }
 
-export function addProperties (property) {
+export function addProperties (property, token) {
   return request.post(rootUrl + '/reports')
+    .set('authorization', 'Bearer ' + token)
     .send(property)
 }

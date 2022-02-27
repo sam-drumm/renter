@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
-import { postReports } from '../apis/reports'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addProperty } from '../actions/property'
+import { useHistory } from 'react-router'
+// import { useNavigate } from 'react-router-dom'
 
-function rentalForm () {
-  const initialState = {
+function RentalForm () {
+  const property = useSelector(state => state.property)
+  const token = useSelector(state => state.user.token)
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+  const [form, setForm] = useState({
     addressAPI: '',
     rooms1: '-1',
     rooms2: '-1',
@@ -27,10 +35,13 @@ function rentalForm () {
     repairsConducted: '-1',
     notice: '-1',
     relationship: '-1'
+  })
 
-  }
-
-  const [form, setForm] = useState(initialState)
+  useEffect(() => {
+    setForm({
+      addressAPI: property.addressAPI
+    })
+  }, [property])
 
   const handleChange = (event) => {
     setForm({
@@ -39,16 +50,15 @@ function rentalForm () {
     })
   }
 
-  function handleSubmit (event) {
+  async function handleSubmit (event) {
     event.preventDefault()
-
-    postReports(form)
-      .then(() => {
-        return null
-      })
-      .catch((err) => {
-        console.error('error cannot post rentalForm', err)
-      })
+    try {
+      console.log('This is your form for dispatch', form)
+      dispatch(addProperty(form, token))
+      history.push('/')
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (
@@ -58,17 +68,18 @@ function rentalForm () {
       <p>Please fill in this form to add your renting experience to the site</p>
       <form>
         <fieldset>
+          <label htmlFor='auth0Id'>auth0Id</label>
           <label>
             Address
           </label>
-          <input type="text" placeholder="address api" value={form.addressAPI} />
+          <input type="text" placeholder="address api" value={form.addressAPI} onChange={handleChange} disabled={true}/>
         </fieldset>
         <fieldset>
           <h2>Rental details</h2>
           <label>
             As a tenant, I have rented
           </label>
-          <select className='' name='years1' onChange={handleChange} value={form.years1}>
+          <select className='' name='rooms1' onChange={handleChange} value={form.rooms1}>
             <option value="-1">---</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -79,7 +90,7 @@ function rentalForm () {
           <label>
             out of
           </label>
-          <select className='' name='years2' onChange={handleChange} value={form.years2}>
+          <select className='' name='rooms2' onChange={handleChange} value={form.rooms2}>
             <option value="-1">---</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -262,4 +273,4 @@ function rentalForm () {
   )
 }
 
-export default rentalForm
+export default RentalForm

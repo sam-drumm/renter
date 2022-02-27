@@ -20,7 +20,7 @@ function App () {
       <Route exact path='/' component={PingRoutes} />
       <Route exact path='/users' component={Users} />
       <Route path='/register' component={Registration} />
-      <Route path='/reports' component={DataResponsePage} />
+      <Route path='/reports' component={DataResponsePage}/>
       <Route path='/rentalform' component={RentalForm} />
     </div>
 

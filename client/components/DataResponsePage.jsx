@@ -30,12 +30,7 @@ function DataResponsePage (props) {
             <th>
             rentUtilities
             </th>
-            <th>
-            year1
-            </th>
-            <th>
-            year2
-            </th>
+
             <th>
             propertyManagedBy
             </th>
@@ -111,12 +106,6 @@ function DataResponsePage (props) {
                 {property.rent_utilities}
               </td>
               <td>
-                {property.year_1}
-              </td>
-              <td>
-                {property.year_2}
-              </td>
-              <td>
                 {property.property_managed_by}
               </td>
               <td>
@@ -170,7 +159,6 @@ function DataResponsePage (props) {
               <td>
                 {property.rate_relationship}
               </td>
-
 
             </tr>
           )}

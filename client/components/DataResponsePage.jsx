@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { fetchProperties } from '../actions/property'
 
 function DataResponsePage (props) {
@@ -168,12 +168,17 @@ function DataResponsePage (props) {
           </tbody>
         </table>
         : <div>
-          <p>
-If you are a previous tenant at this address,
-please <link>log in/register </link> to complete a
-property information form
-          </p>
+          <nav className=''>
+            <p>
 
+            There are not properties that match the address you have searched for.
+If you are a previous tenant at this address, please
+
+              <Link to='/register'> log-in / register</Link>
+
+              to complete a Rental Form.
+            </p>
+          </nav>
         </div>
       }
 

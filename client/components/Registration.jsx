@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
 
 function Registration () {
   const user = useSelector(state => state.user)
-  const history = useHistory()
+  const history = useNavigate()
 
   const [form, setForm] = useState({
     auth0Id: '',
@@ -35,7 +35,7 @@ function Registration () {
     // registerUser(form, authUser, history.push)
     try {
       await addUser(form)
-      history.push('/')
+      history('/')
     } catch (error) {
       console.error(error)
     }

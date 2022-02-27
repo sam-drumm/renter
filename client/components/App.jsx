@@ -8,7 +8,7 @@ import PingRoutes from './PingRoutes'
 import Registration from './Registration'
 import RentalForm from './RentalForm'
 import Users from './Users'
-import DataResponseRedo from './DataResponseRedo'
+import DataResponsePage from './DataResponsePage'
 
 function App () {
   cacheUser(useAuth0)
@@ -21,7 +21,7 @@ function App () {
         <Route path='/' element={<PingRoutes/>} />
         <Route path='/users' element={<Users/>} />
         <Route path='/register' element={<Registration/>} />
-        <Route path='/reports/:address' element={<DataResponseRedo/>} />
+        <Route path='/reports/:address' element={<DataResponsePage/>} />
         <Route path='/rentalform' element={<RentalForm/>} />
 
       </Routes>

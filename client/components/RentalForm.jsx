@@ -237,7 +237,7 @@ function RentalForm () {
           </select>
           <label>
             <p></p>
-            Were tenants provided sufficient notice before Landlord/Property Manager arrived at property?
+            Were tenants provided sufficient notice before Landlord/Property Manager arrived at the property?
           </label>
           <select className='' name='notice' onChange={handleChange} value={form.notice}>
             <option value="-1">---</option>

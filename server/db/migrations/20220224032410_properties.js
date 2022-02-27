@@ -2,6 +2,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('properties', table => {
     table.increments('id')
     table.string('address')
+    table.string('address')
   })
 }
 

@@ -14,4 +14,9 @@ server.use('/api/v1/users', usersRoutes)
 server.use('/api/v1/properties', propRoutes)
 server.use('/api/v1/reports', reportRoutes)
 
+// Redirect all of our server requests to /index.html
+server.get('*', (req, res) => {
+  res.sendFile(path.resolve('server/public/index.html'))
+})
+
 module.exports = server

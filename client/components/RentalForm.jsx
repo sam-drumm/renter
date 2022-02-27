@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProperty } from '../actions/property'
-import { useHistory } from 'react-router'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function RentalForm () {
   const property = useSelector(state => state.property)
   const token = useSelector(state => state.user.token)
   const dispatch = useDispatch()
-  const history = useHistory()
+  const history = useNavigate()
 
   const [form, setForm] = useState({
     addressAPI: '',
@@ -55,7 +54,7 @@ function RentalForm () {
     try {
       console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
-      history.push('/')
+      history('/')
     } catch (err) {
       console.error(err)
     }
@@ -65,7 +64,7 @@ function RentalForm () {
 
     <div className='form-wrapper'>
       <h1>Rental Form</h1>
-      <p>Please fill in this form to add your renting experience to the site</p>
+      <p>Please fill in this form to add to the Renter database.</p>
       <form>
         <fieldset>
           <label htmlFor='auth0Id'>auth0Id</label>
@@ -174,6 +173,7 @@ function RentalForm () {
             <input type="checkbox" name="heatPump" onChange={handleChange} value={form.heatPump} />
           </label>
           <label>
+            <p></p>
             Insulation
             <input type="checkbox" name="insulation" onChange={handleChange} value={form.insulation} />
           </label>

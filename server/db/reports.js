@@ -1,7 +1,9 @@
 const connection = require('./connection')
 
-function getReports (db = connection) {
+function getReports (address, db = connection) {
   return db('reports')
+    .join('properties', 'reports.id', 'properties.id')
+    .where('address', address)
     .select()
 }
 

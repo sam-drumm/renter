@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
 import { getAddresses } from '../apis/addresses'
+import { useHistory } from 'react-router-dom'
 
-export function SearchBar () {
+export default function SearchBar ({ placeholder }) {
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState('')
+  const history = useHistory()
 
   const handleFilter = async (event) => {
     const searchWord = event.target.value
@@ -26,8 +28,9 @@ export function SearchBar () {
 
   function handleClick (value) {
     setFilteredData([])
-    console.log(`selected address: ${value}`)
-    console.log("not it's time to navigate to another page")
+    console.log(`selected address: ${value.address}`)
+    console.log("now it's time to navigate to another page")
+    history.push(`/reports/${value.address}`)
   }
 
   return (
@@ -65,5 +68,3 @@ export function SearchBar () {
     </div>
   )
 }
-
-export default SearchBar

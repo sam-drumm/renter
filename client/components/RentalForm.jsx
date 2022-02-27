@@ -53,7 +53,7 @@ function RentalForm () {
   async function handleSubmit (event) {
     event.preventDefault()
     try {
-      console.log('hey sam, here is your form for dispatch', form)
+      console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
       history.push('/')
     } catch (err) {
@@ -104,7 +104,7 @@ function RentalForm () {
 
           <label>
             <p></p>
-            Rent paid in total $
+            Rent paid in total per week $
             <input cols='10' className='' name='rentTotal' type="number" onChange={handleChange} value={form.rentTotal} />
           </label>
           <label>
@@ -263,6 +263,11 @@ function RentalForm () {
 
       </form>
       <button className='button' onClick={handleSubmit}>Submit</button>
+      <div>
+        <h3>Disclaimer:</h3>
+        <p>Length of tenancy is for internal use only to verify that the data remains up to date and within the last 5 years</p>
+      </div>
+
     </div>
 
   )

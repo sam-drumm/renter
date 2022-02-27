@@ -23,11 +23,10 @@ exports.up = function (knex) {
     table.boolean('fire_extinguisher')
     table.boolean('smoking_ok')
     table.boolean('subletting_allowed')
-    table.integer('rental_management')
-    table.integer('responsive_repairs')
-    table.string('repairs_conducted')
-    table.integer('sufficient_notice')
-    table.integer('rate_relationship')
+    table.string('responsive_repairs')
+    table.string('repairs')
+    table.string('sufficient_notice')
+    table.string('rate_relationship')
   })
 }
 

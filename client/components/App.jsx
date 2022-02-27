@@ -16,12 +16,11 @@ function App () {
   return (
     <div className='app'>
       <Route exact path='/' component={Nav} />
-      <Route exact path='/' component={SearchBar} />
+      {/* <Route exact path='/' component={SearchBar} /> */}
       <Route exact path='/' component={PingRoutes} />
       <Route exact path='/users' component={Users} />
       <Route path='/register' component={Registration} />
-      {/* <Route path='/rentalform' component={RentalForm} /> */}
-      <Route path='/reports' component={DataResponsePage} />
+      <Route path='/reports/:address' component={DataResponsePage} />
       <Route path='/rentalform' component={RentalForm} />
     </div>
 

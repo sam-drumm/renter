@@ -31,9 +31,9 @@ export function clearProperties () {
   }
 }
 
-export function fetchProperties () {
+export function fetchProperties (address) {
   return dispatch => {
-    return getProperties()
+    return getProperties(address)
       .then(properties => {
         dispatch(setProperties(properties))
         return null

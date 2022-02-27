@@ -10,7 +10,7 @@ const router = express.Router()
 
 // GET /api/v1/reports
 router.get('/', (req, res) => {
-  db.getReports()
+  db.getReports(req.query.address)
     .then((report) => {
       res.json({ report })
       return null

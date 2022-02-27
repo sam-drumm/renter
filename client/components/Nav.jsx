@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Nav () {
   const user = useSelector(state => state.user)
@@ -26,8 +27,10 @@ function Nav () {
   }
 
   return (
-    <nav>
-      <h1 className='logo'>Renter</h1>
+    <nav className='nav'>
+      <Link to="/">
+        <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
+      </Link>
       <section className='nav-item'>
         <IfAuthenticated>
           <p>Hey {user.nickname}! {user.roles ? `(${user.roles})` : null}</p>

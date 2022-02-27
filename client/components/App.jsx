@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
-import SearchBar from './SearchBar'
+import { Home } from './Home'
 import { Route } from 'react-router'
 import Nav from './Nav'
 import PingRoutes from './PingRoutes'
@@ -16,7 +16,7 @@ function App () {
   return (
     <div className='app'>
       <Route exact path='/' component={Nav} />
-      {/* <Route exact path='/' component={SearchBar} /> */}
+      <Route exact path='/' component={Home} />
       <Route exact path='/' component={PingRoutes} />
       <Route exact path='/users' component={Users} />
       <Route path='/register' component={Registration} />

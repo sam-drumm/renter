@@ -5,7 +5,7 @@ const fakeData = [
   { id: 2, pxid: '2', address: '12 Morgan Street, Newmarket, Auckland' },
   { id: 3, pxid: '3', address: '11 Chatfield Place, Remuera, Auckland' },
   { id: 4, pxid: '4', address: '28 Kingsview Road, Mount Eden, Auckland' },
-  { id: 5, pxid: '5', address: '100 Queen Street, Auckland Central, Auckland'}
+  { id: 5, pxid: '5', address: '100 Queen Street, Auckland Central, Auckland' }
 ]
 
 export function getAddresses (input) {

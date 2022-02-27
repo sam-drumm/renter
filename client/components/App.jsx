@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
-import { Home } from './Home'
+import Home from './Home'
 import { Route, Routes } from 'react-router-dom'
 import Nav from './Nav'
-import PingRoutes from './PingRoutes'
 import Registration from './Registration'
 import RentalForm from './RentalForm'
 import Users from './Users'
@@ -28,9 +27,7 @@ function App () {
       <Paper style={{ height: '100vh' }}>
         <div className='app'>
           <Routes>
-            <Route path='/' element={<Nav/>} />
-            <Route path='/' element={<Home/>} />
-            <Route path='/' element={<PingRoutes/>} />
+            <Route path='/' element={<> <Nav/> <Home/> </>} />
             <Route path='/users' element={<Users/>} />
             <Route path='/register' element={<Registration/>} />
             <Route path='/reports/:address' element={<DataResponseRedo/>} />

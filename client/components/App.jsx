@@ -8,9 +8,9 @@ import PingRoutes from './PingRoutes'
 import Registration from './Registration'
 import RentalForm from './RentalForm'
 import Users from './Users'
+import LandingPage from './LandingPage'
 // import { Button, Paper, Switch } from '@material-ui/core'
 // import { ThemeProvider, createTheme } from '@material-ui/core/styles'
-import DataResponseRedo from './DataResponseRedo'
 
 
 function App () {
@@ -30,11 +30,11 @@ function App () {
       <Header />
       <main className='container margin-container flex-container centre-flex'>
         <Routes>
-          <Route path='/' element={<SearchBar/>} placeholder='Start by typing the address of the rental property...' />
+          <Route path='/' element={<LandingPage/>}  />
           <Route path='/' element={<PingRoutes/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/register' element={<Registration/>} />
-          <Route path='/reports/:address' element={<DataResponseRedo/>} />
+          {/* <Route path='/reports/:address' element={<DataResponseRedo/>} /> */}
           <Route path='/rentalform' element={<RentalForm/>} />
         </Routes>
       </main>

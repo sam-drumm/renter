@@ -15,7 +15,13 @@ function addProperty (newProperty, db = connection) {
     })
 }
 
+function getAddresses (db = connection) {
+  return db('properties')
+    .select('address')
+}
+
 module.exports = {
   getProperties,
-  addProperty
+  addProperty,
+  getAddresses
 }

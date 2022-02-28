@@ -13,6 +13,10 @@ exports.seed = function (knex) {
         {
           id: 3,
           address: '300 Queen Street, Auckland Central, Auckland'
+        },
+        {
+          id: 4,
+          address: '12 Morgan Street, Newtown Central, Auckland'
         }
       ])
     })

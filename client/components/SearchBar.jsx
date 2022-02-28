@@ -38,7 +38,7 @@ export default function SearchBar ({ placeholder }) {
       <div className='searchInputs'>
         <input
           type='text'
-          placeholder={placeholder}
+          placeholder='Start by typing the address of the rental property...'
           value={wordEntered}
           onChange={handleFilter}
         />

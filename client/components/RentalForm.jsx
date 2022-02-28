@@ -7,7 +7,7 @@ function RentalForm () {
   const property = useSelector(state => state.property)
   const token = useSelector(state => state.user.token)
   const dispatch = useDispatch()
-  const history = useNavigate()
+  const navigate = useNavigate()
 
   const [form, setForm] = useState({
     addressAPI: '',
@@ -54,7 +54,9 @@ function RentalForm () {
     try {
       console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
-      history('/')
+      navigate('/')
+      window.alert('Thank you! Your rental form has been submitted.')
+      // we want to go to data response page with the report that was just made
     } catch (err) {
       console.error(err)
     }
@@ -67,11 +69,13 @@ function RentalForm () {
       <p>Please fill in this form to add to the Renter database.</p>
       <form>
         <fieldset>
-          <label htmlFor='auth0Id'>auth0Id</label>
+          {/* <label htmlFor='auth0Id'>auth0Id</label> */}
           <label>
-            Address
+            Address:
           </label>
-          <input type="text" placeholder="address api" value={form.addressAPI} onChange={handleChange} disabled={true}/>
+          <input type="text" rows='5' cols='100' placeholder="Please enter the rental address" value={form.addressAPI} onChange={handleChange} />
+          <p>Format example: 12 Richmond Road, Ponsonby, Auckland</p>
+
         </fieldset>
         <fieldset>
           <h2>Rental details</h2>
@@ -168,47 +172,72 @@ function RentalForm () {
         </fieldset>
         <fieldset>
           <h2>Amenities</h2>
-          <label>
+          <ul>
+            <li>
+              <label>
             Heat Pump
-            <input type="checkbox" name="heatPump" onChange={handleChange} value={form.heatPump} />
-          </label>
-          <label>
-            <p></p>
+                <input type="checkbox" name="heatPump" onChange={handleChange} value={form.heatPump} />
+              </label>
+            </li>
+            <li>
+              <label>
             Insulation
-            <input type="checkbox" name="insulation" onChange={handleChange} value={form.insulation} />
-          </label>
-          <label>
+                <input type="checkbox" name="insulation" onChange={handleChange} value={form.insulation} />
+              </label>
+            </li>
+            <li>
+              <label>
             Fridge
-            <input type="checkbox" name="fridge" onChange={handleChange} value={form.fridge} />
-          </label>
-          <label>
+                <input type="checkbox" name="fridge" onChange={handleChange} value={form.fridge} />
+              </label>
+            </li>
+            <li>
+              <label>
             Oven
-            <input type="checkbox" name="Oven" onChange={handleChange} value={form.oven} />
-          </label>
-          <label>
+                <input type="checkbox" name="Oven" onChange={handleChange} value={form.oven} />
+              </label>
+            </li>
+            <li>
+              <label>
             Smoke Alarm
-            <input type="checkbox" name="smokeAlarm" onChange={handleChange} value={form.smokeAlarm} />
-          </label>
-          <label>
+                <input type="checkbox" name="smokeAlarm" onChange={handleChange} value={form.smokeAlarm} />
+              </label>
+            </li>
+            <li>
+              <label>
             Fire extinguisher
-            <input type="checkbox" name="fireExtinguisher" onChange={handleChange} value={form.fireExtinguisher} />
-          </label>
-          <label>
+                <input type="checkbox" name="fireExtinguisher" onChange={handleChange} value={form.fireExtinguisher} />
+              </label>
+            </li>
+            <li>
+              <label>
             Curtains in bedroom
-            <input type="checkbox" name="curtains" onChange={handleChange} value={form.curtains} />
-          </label>
-          <label>
+                <input type="checkbox" name="curtains" onChange={handleChange} value={form.curtains} />
+              </label>
+            </li>
+          </ul>
+          <h3>Additional terms</h3>
+          <ul>
+            <li>
+
+              <label>
             Pets OK
-            <input type="checkbox" name="pets" onChange={handleChange} value={form.pets} />
-          </label>
-          <label>
+                <input type="checkbox" name="pets" onChange={handleChange} value={form.pets} />
+              </label>
+            </li>
+            <li>
+              <label>
             Smoking OK
-            <input type="checkbox" name="smoking" onChange={handleChange} value={form.smoking} />
-          </label>
-          <label>
+                <input type="checkbox" name="smoking" onChange={handleChange} value={form.smoking} />
+              </label>
+            </li>
+            <li>
+              <label>
             Subletting OK
-            <input type="checkbox" name="subletting" onChange={handleChange} value={form.subletting} />
-          </label>
+                <input type="checkbox" name="subletting" onChange={handleChange} value={form.subletting} />
+              </label>
+            </li>
+          </ul>
         </fieldset>
         <fieldset>
           <h2>Relationship with landlord/property manager</h2>

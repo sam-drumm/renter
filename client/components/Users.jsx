@@ -24,9 +24,6 @@ function Users (props) {
             <th>
               email
             </th>
-            <th>
-              description
-            </th>
 
           </tr>
         </thead>
@@ -41,9 +38,6 @@ function Users (props) {
               </td>
               <td>
                 {user.email}
-              </td>
-              <td>
-                {user.description}
               </td>
 
             </tr>

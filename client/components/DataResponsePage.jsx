@@ -97,6 +97,13 @@ function DataResponsePage (props) {
               <p>
                Relationship with the landlord/property manager was rated: {property.rate_relationship}
               </p>
+              <br>
+              </br>
+              <br>
+              </br>
+              <p>
+                This post was created by:
+              </p>
             </div>
           )}
 

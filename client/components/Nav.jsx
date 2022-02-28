@@ -33,7 +33,7 @@ function Nav () {
       </Link>
       <section className='nav-item'>
         <IfAuthenticated>
-          <p>Hey {user.nickname}! {user.roles ? `(${user.roles})` : null}</p>
+          <p>Welcome {user.nickname}! {user.roles ? `(${user.roles})` : null}</p>
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>

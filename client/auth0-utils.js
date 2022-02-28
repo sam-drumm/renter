@@ -1,4 +1,5 @@
 import { setUser } from './actions/user'
+import { getUser } from './apis/users'
 // import { getUserRoles } from './apis/users'
 import store from './store'
 
@@ -19,15 +20,13 @@ export async function cacheUser (useAuth0) {
   if (isAuthenticated) {
     try {
       const token = await getAccessTokenSilently()
-      // const roles = await getUserRoles(user.sub)
-      const userToSave = {
-        auth0Id: user.sub,
-        email: user.email,
-        name: user.nickname,
-        token
-        // roles
+      const existingUser = await getUser(user.sub, token)
+      if (existingUser) {
+        const { id, nickname } = existingUser
+        saveUser({ id, auth0Id: user.sub, nickname, email: user.name, token })
+      } else {
+        saveUser({ auth0Id: user.sub, email: user.name, token })
       }
-      saveUser(userToSave)
     } catch (err) {
       console.error(err)
     }
@@ -50,10 +49,18 @@ export function getIsAuthenticated (useAuth0) {
 
 export function getRegisterFn (useAuth0) {
   const { loginWithRedirect } = useAuth0()
-  const redirectUri = `${window.location.origin}/#/register`
+  const redirectUri = `${window.location.origin}/register`
   return () => loginWithRedirect({
     redirectUri,
     screen_hint: 'signin',
     scope: 'role:member'
   })
 }
+
+// const { loginWithRedirect } = useAuth0()
+// const redirectUri = `${window.location.origin}/rentalform`
+// // return () => loginWithRedirect({
+// //   redirectUri
+//   // screen_hint: 'signin',
+//   // scope: 'role:member'
+// })

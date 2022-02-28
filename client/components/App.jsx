@@ -8,9 +8,13 @@ import PingRoutes from './PingRoutes'
 import Registration from './Registration'
 import RentalForm from './RentalForm'
 import Users from './Users'
+
+import DataResponsePage from './DataResponsePage'
+
 import { Button, Paper, Switch } from '@material-ui/core'
 import { ThemeProvider, createTheme } from '@material-ui/core/styles'
 import DataResponseRedo from './DataResponseRedo'
+
 
 function App () {
   cacheUser(useAuth0)
@@ -24,6 +28,7 @@ function App () {
   })
 
   return (
+
     <>
       <Header />
       <main className='container margin-container flex-container centre-flex'>

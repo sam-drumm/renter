@@ -4,9 +4,8 @@ exports.seed = function (knex) {
       return knex('reports').insert([
         {
           id: 1,
-          property_id: 1,
           user_id: 1,
-          address_api: 'hello sam',
+          address: 'sam address',
           rooms_1: 1,
           rooms_2: 3,
           rent_total: 600,
@@ -34,9 +33,8 @@ exports.seed = function (knex) {
         },
         {
           id: 2,
-          property_id: 2,
           user_id: 1,
-          address_api: 'Hello isabella',
+          address: 'isabells address',
           rooms_1: 1,
           rooms_2: 3,
           rent_total: 900,

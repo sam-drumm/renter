@@ -1,6 +1,6 @@
 const request = require('superagent')
 const express = require('express')
-const db = require('../db/properties')
+const db = require('../db/reports')
 
 const router = express.Router()
 

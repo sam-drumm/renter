@@ -11,7 +11,8 @@ import Users from './Users'
 import LandingPage from './LandingPage'
 // import { Button, Paper, Switch } from '@material-ui/core'
 // import { ThemeProvider, createTheme } from '@material-ui/core/styles'
-
+import { ChakraProvider } from '@chakra-ui/react'
+import myNewTheme from '../styles/theme'
 
 function App () {
   cacheUser(useAuth0)
@@ -27,6 +28,7 @@ function App () {
   return (
 
     <>
+    <ChakraProvider theme={myNewTheme}>
       <Header />
       <main className='container margin-container flex-container centre-flex'>
         <Routes>
@@ -41,7 +43,7 @@ function App () {
 
       {/* <Paper/>
       <ThemeProvider/> */}
-
+    </ChakraProvider>
     </>
 
   )

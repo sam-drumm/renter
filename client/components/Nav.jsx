@@ -13,6 +13,8 @@ function Nav () {
   const register = getRegisterFn(useAuth0)
   const [nickname, setNickname] = useState([])
 
+  console.log('user', user)
+
   useEffect(() => {
     getUsers()
       .then(res => {

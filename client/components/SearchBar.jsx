@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { getAddresses } from '../apis/addresses'
 import { useNavigate } from 'react-router-dom'
 
-export default function SearchBar ({ placeholder }) {
+export default function SearchBar () {
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState('')
   const history = useNavigate()

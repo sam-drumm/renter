@@ -8,12 +8,11 @@ function RentalForm () {
   const token = useSelector(state => state.user.token)
   const auth0Id = useSelector(state => state.user.auth0Id)
 
-  console.log(token)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const [form, setForm] = useState({
-    auth0Id,
+    auth0Id: auth0Id,
     address: '',
     rooms1: '-1',
     rooms2: '-1',
@@ -50,6 +49,7 @@ function RentalForm () {
   const handleChange = (event) => {
     setForm({
       ...form,
+      auth0Id,
       [event.target.name]: event.target.value
     })
   }
@@ -74,7 +74,6 @@ function RentalForm () {
       <p>Please fill in this form to add to the Renter database.</p>
       <form>
         <fieldset>
-          {/* <label htmlFor='auth0Id'>auth0Id</label> */}
           <label>
             Address:
           </label>

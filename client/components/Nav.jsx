@@ -11,20 +11,21 @@ function Nav () {
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
-  const [nickname, setNickname] = useState([])
 
-  console.log('nickname', nickname)
+  const [nickname, setNickname] = useState('')
 
   useEffect(() => {
-    getUsers()
-      .then(res => {
-        setNickname(res)
-        return null
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }, [])
+    if (user.auth0Id) {
+      getUsers()
+        .then(res => {
+          setNickname(res)
+          return null
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+  }, [user])
 
   function handleLogin (event) {
     event.preventDefault()
@@ -48,18 +49,22 @@ function Nav () {
       </Link>
       <section className='nav-item'>
         <IfAuthenticated>
-          <p>Welcome {nickname.filter(name => name.auth0_id === user.auth0Id).map(name => name.nickname)}!</p>
+
+          { nickname &&
+          <p>Welcome {nickname}!</p>
+          }
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>
+
         </IfAuthenticated>
         <IfNotAuthenticated>
-          {/* <section className='nav-item'> */}
+
           <section className='sign'>
             <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
             <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
           </section>
-          {/* </section> */}
+
         </IfNotAuthenticated>
       </section>
     </nav >

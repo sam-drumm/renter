@@ -16,7 +16,8 @@ function DataResponsePage (props) {
   const properties = useSelector(state => state.properties)
   useEffect(() => {
     console.log(address)
-    dispatch(fetchProperties(address)) // pass in the input address
+    dispatch(fetchProperties(address))
+    console.log('properties', properties)// pass in the input address
   }, [])
 
   const [nickname, setNickname] = useState([])
@@ -46,7 +47,7 @@ function DataResponsePage (props) {
     <section className='properties'>
 
       {properties.length > 0
-        ? <div>
+        ? <div> {console.log(properties)}
           {properties.map(property =>
             <div key={property.id}>
               <p className='title'>Search results:</p>
@@ -132,8 +133,7 @@ function DataResponsePage (props) {
               <br>
               </br>
               <p>
-                This post was created by: {nickname.filter(name => name.auth0_id === user.auth0Id).map(name => name.nickname
-                )
+                This post was created by: {nickname.filter(name => name.auth0_id === property.user_id).map(name => name.nickname)
 
                 }
               </p>

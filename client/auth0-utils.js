@@ -1,6 +1,5 @@
 import { setUser } from './actions/user'
 import { getUser } from './apis/users'
-// import { getUserRoles } from './apis/users'
 import store from './store'
 
 const emptyUser = {
@@ -60,12 +59,3 @@ export function getRegisterFn (useAuth0) {
     scope: 'role:member'
   })
 }
-
-// const { loginWithRedirect } = useAuth0()
-// const redirectUri = `${window.location.origin}/rentalform`
-// // return () => loginWithRedirect({
-// //   redirectUri
-//   // screen_hint: 'signin',
-//   // scope: 'role:member'
-// })
-// ({ screen_hint: 'rentalform' })

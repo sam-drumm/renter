@@ -21,16 +21,16 @@ export default function LandingPage () {
             <SearchBar placeholder='Start by typing the address of the rental property...' />
         </GridItem>
         
-        <GridItem colSpan={3} mx={10} bg='lavender' borderRadius='15'>
+        <GridItem colSpan={3} ml={20} mr={15} bg='lavender' borderRadius='15'>
             <Heading as='h2' size='xl' color='pink' m={5}>Step 1</Heading>
             <Text fontSize='xl' color='blue' m={5}>Search your rental by address. If it's not there, sign up or log in to request for it to be added to our database.</Text>
         </GridItem>
 
-        <GridItem colSpan={3} mx={10} bg='lavender' borderRadius='15'>
+        <GridItem colSpan={3} ml={10} mr={10} bg='lavender' borderRadius='15'>
         <Heading as='h2' size='xl' color='pink' m={5}>Step 2</Heading>
                 <Text fontSize='xl' color='blue' m={5}>Read reports or add your own. Sign up or log in to add a report</Text>
         </GridItem>
-        <GridItem colSpan={3} bg='lavender' mx={10} borderRadius='15'>
+        <GridItem colSpan={3} bg='lavender' ml={15} mr={20} borderRadius='15'>
         <Heading as='h2' size='xl' color='pink' m={5}>Step 3</Heading>
                 <Text fontSize='xl' color='blue' m={5}>Rent with confidence and make the world a better place.</Text>
         </GridItem>

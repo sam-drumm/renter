@@ -8,7 +8,8 @@ const router = express.Router()
 // middleware for checking permissions (authorization)
 // const checkAdmin = jwtAuthz(['create:record'], { customScopeKey: 'permissions' })
 
-// GET /api/v1/reports
+// only retrieve the reports by a given address
+// GET /api/v1/reports?address=12 morgan st, Auckland 0123
 router.get('/', (req, res) => {
   db.getReports(req.query.address)
     .then((report) => {

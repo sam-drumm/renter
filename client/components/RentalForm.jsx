@@ -6,12 +6,14 @@ import { useNavigate } from 'react-router-dom'
 function RentalForm () {
   const property = useSelector(state => state.property)
   const token = useSelector(state => state.user.token)
+  const auth0Id = useSelector(state => state.user.auth0Id)
 
   console.log(token)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const [form, setForm] = useState({
+    auth0Id,
     addressAPI: '',
     rooms1: '-1',
     rooms2: '-1',
@@ -40,6 +42,7 @@ function RentalForm () {
 
   useEffect(() => {
     setForm({
+      ...form,
       addressAPI: property.addressAPI
     })
   }, [property])
@@ -75,7 +78,7 @@ function RentalForm () {
           <label>
             Address:
           </label>
-          <input type="text" rows='5' cols='100' placeholder="Please enter the rental address" value={form.addressAPI} onChange={handleChange} />
+          <input type="text" rows='5' cols='100' placeholder="Please enter the rental address" name='addressAPI' value={form.addressAPI} onChange={handleChange} />
           <p>Format example: 12 Richmond Road, Ponsonby, Auckland</p>
 
         </fieldset>

@@ -1,6 +1,6 @@
 const connection = require('./connection')
 
-function getReports (address, db = connection) {
+function getReportsByAddress (address, db = connection) {
   return db('reports')
     .join('properties', 'reports.id', 'properties.id')
     .where('address', address)
@@ -76,7 +76,7 @@ function addReport (newReport, db = connection) {
 }
 
 module.exports = {
-  getReports,
+  getReportsByAddress,
   getReportsById,
   addReport
 }

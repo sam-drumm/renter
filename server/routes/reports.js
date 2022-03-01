@@ -11,7 +11,7 @@ const router = express.Router()
 // only retrieve the reports by a given address
 // GET /api/v1/reports?address=12 morgan st, Auckland 0123
 router.get('/', (req, res) => {
-  db.getReports(req.query.address)
+  db.getReportsByAddress(req.query.address)
     .then((report) => {
       res.json({ report })
       return null
@@ -30,6 +30,7 @@ router.get('/', (req, res) => {
 // need to address this ()
 
 router.post('/', checkJwt, (req, res) => {
+  console.log('req.body', req.body)
   const { auth0Id, addressAPI, rooms1, rooms2, rentTotal, utilities, year1, year2, managedBy, rentIncrease, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, pets, smoking, subletting, repairsResponsive, repairsConducted, notice, relationship } = req.body
   const newReport = { auth0Id, addressAPI, rooms1, rooms2, rentTotal, utilities, year1, year2, managedBy, rentIncrease, aveIncrease, heatPump, insulation, fridge, curtains, oven, smokeAlarm, fireExtinguisher, pets, smoking, subletting, repairsResponsive, repairsConducted, notice, relationship }
   db.addReport(newReport)

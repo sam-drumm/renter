@@ -3,6 +3,7 @@ const connection = require('./connection')
 function getAddresses (db = connection) {
   return db('reports')
     .select('address')
+    .distinct()
 }
 
 function getReportsByAddress (address, db = connection) {

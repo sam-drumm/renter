@@ -14,7 +14,7 @@ function RentalForm () {
 
   const [form, setForm] = useState({
     auth0Id,
-    addressAPI: '',
+    address: '',
     rooms1: '-1',
     rooms2: '-1',
     rentTotal: '',
@@ -43,7 +43,7 @@ function RentalForm () {
   useEffect(() => {
     setForm({
       ...form,
-      addressAPI: property.addressAPI
+      address: property.address
     })
   }, [property])
 
@@ -78,7 +78,7 @@ function RentalForm () {
           <label>
             Address:
           </label>
-          <input type="text" rows='5' cols='100' placeholder="Please enter the rental address" name='addressAPI' value={form.addressAPI} onChange={handleChange} />
+          <input type="text" rows='5' cols='100' placeholder="Please enter the rental address" name='address' value={form.address} onChange={handleChange} />
           <p>Format example: 12 Richmond Road, Ponsonby, Auckland</p>
 
         </fieldset>

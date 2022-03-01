@@ -1,4 +1,4 @@
-import { getProperties, addProperties } from '../apis/properties'
+import { getProperties, addProperties } from '../apis/reports'
 
 export const SET_PROPERTY = 'SET_PROPERTY'
 export const SET_PROPERTIES = 'SET_PROPERTIES'

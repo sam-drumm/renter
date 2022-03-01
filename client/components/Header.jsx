@@ -6,10 +6,10 @@ import WaitIndicator from './WaitIndicator'
 export default function Header () {
   return (
     <header>
-      {/* <div className='flex-container container'> */}
+      <div className='flex-container container'>
         <WaitIndicator />
         <Nav />
-      {/* </div> */}
+      </div>
     </header>
   )
 }

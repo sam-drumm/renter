@@ -3,9 +3,8 @@ import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
 import { getAddresses } from '../apis/addresses'
 import { useNavigate } from 'react-router-dom'
-import { Box, Input } from '@chakra-ui/react'
 
-export default function SearchBar ({ placeholder }) {
+export default function SearchBar () {
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState('')
   const history = useNavigate()

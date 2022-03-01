@@ -5,11 +5,11 @@ import WaitIndicator from './WaitIndicator'
 
 export default function Header () {
   return (
-    <header className='header'>
-      <div className='flex-container container'>
+    <header>
+      {/* <div className='flex-container container'> */}
         <WaitIndicator />
         <Nav />
-      </div>
+      {/* </div> */}
     </header>
   )
 }

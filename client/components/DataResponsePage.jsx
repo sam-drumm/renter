@@ -63,13 +63,13 @@ function DataResponsePage (props) {
               Total rent paid per week ${property.rent_total}
               </p>
               <p>
-              Were utilities included in the rent? (e.g. water, power, internet)  {property.rent_utilities}
+              Were utilities included in the rent? (e.g. water, power, internet)  {property.utilities}
               </p>
               <p>
               The rental property was managed by:  {property.property_managed_by}
               </p>
               <p>
-             The rent increased: {property.rent_increase_frequency}
+             The rent increased: {property.rent_increase}
               </p>
               <p>
             The average rent increase was ${property.ave_increase}

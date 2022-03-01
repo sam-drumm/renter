@@ -1,4 +1,3 @@
-const request = require('superagent')
 const express = require('express')
 const db = require('../db/reports')
 
@@ -13,18 +12,10 @@ router.get('/', async (req, res) => {
       return value.address?.toLowerCase().includes(req.query.query?.toLowerCase())
     })
 
-    console.log(addresses)
     res.json(result)
   } catch (error) {
     console.error(error)
   }
-//   request.get(`https://address.finder.nz/q=${req.query.query}`)
-//     .set('apiKey', 'YNTKPBLFDGHA8RMVXQ37')
-//     .then(apiResponse => {
-//       res.json(apiResponse.body)
-//     })
 })
-
-// make HTTP request
 
 module.exports = router

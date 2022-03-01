@@ -22,7 +22,7 @@ const emptyProperty = {
   pets: false,
   smoking: false,
   subletting: false,
-  repairsConducted: '-1',
+  repairs: '-1',
   repairsResponsive: '-1',
   notice: '-1',
   relationship: '-1'

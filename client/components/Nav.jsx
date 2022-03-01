@@ -13,7 +13,7 @@ function Nav () {
   const register = getRegisterFn(useAuth0)
   const [nickname, setNickname] = useState([])
 
-  console.log('user', user)
+  console.log('nickname', nickname)
 
   useEffect(() => {
     getUsers()
@@ -48,10 +48,7 @@ function Nav () {
       </Link>
       <section className='nav-item'>
         <IfAuthenticated>
-          <p>Welcome {nickname.filter(name => name.auth0_id === user.auth0Id).map(name => name.nickname
-          )
-
-          }!</p>
+          <p>Welcome {nickname.filter(name => name.auth0_id === user.auth0Id).map(name => name.nickname)}!</p>
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>

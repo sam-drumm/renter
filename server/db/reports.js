@@ -23,7 +23,7 @@ function getReportsById (id, db = connection) {
       'reports.year_1 as year1',
       'reports.year_2 as year2',
       'reports.property_managed_by as propertyManagedBy',
-      'reports.rent_increase_frequency as rentIncreaseFrequency',
+      'reports.rent_increase as rentIncrease',
       'reports.ave_increase as aveIncrease',
       'reports.heat_pump as heatPump',
       'reports.insulation as insulation',

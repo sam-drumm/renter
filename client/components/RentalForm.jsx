@@ -35,7 +35,7 @@ function RentalForm () {
     smoking: false,
     subletting: false,
     repairsResponsive: '-1',
-    repairsConducted: '-1',
+    repairs: '-1',
     notice: '-1',
     relationship: '-1'
   })
@@ -180,44 +180,44 @@ function RentalForm () {
           <ul>
             <li>
               <label>
-            Heat Pump
                 <input type="checkbox" name="heatPump" onChange={handleChange} value={form.heatPump} />
+                Heat Pump
               </label>
             </li>
             <li>
               <label>
-            Insulation
                 <input type="checkbox" name="insulation" onChange={handleChange} value={form.insulation} />
+                Insulation
               </label>
             </li>
             <li>
               <label>
-            Fridge
                 <input type="checkbox" name="fridge" onChange={handleChange} value={form.fridge} />
+                Fridge
               </label>
             </li>
             <li>
               <label>
-            Oven
-                <input type="checkbox" name="Oven" onChange={handleChange} value={form.oven} />
+                <input type="checkbox" name="oven" onChange={handleChange} value={form.oven} />
+                Oven
               </label>
             </li>
             <li>
               <label>
-            Smoke Alarm
                 <input type="checkbox" name="smokeAlarm" onChange={handleChange} value={form.smokeAlarm} />
+                Smoke Alarm
               </label>
             </li>
             <li>
               <label>
-            Fire extinguisher
                 <input type="checkbox" name="fireExtinguisher" onChange={handleChange} value={form.fireExtinguisher} />
+                Fire extinguisher
               </label>
             </li>
             <li>
               <label>
-            Curtains in bedroom
                 <input type="checkbox" name="curtains" onChange={handleChange} value={form.curtains} />
+                Curtains in bedroom
               </label>
             </li>
           </ul>
@@ -226,20 +226,20 @@ function RentalForm () {
             <li>
 
               <label>
-            Pets OK
                 <input type="checkbox" name="pets" onChange={handleChange} value={form.pets} />
+                Pets OK
               </label>
             </li>
             <li>
               <label>
-            Smoking OK
                 <input type="checkbox" name="smoking" onChange={handleChange} value={form.smoking} />
+                Smoking OK
               </label>
             </li>
             <li>
               <label>
-            Subletting OK
                 <input type="checkbox" name="subletting" onChange={handleChange} value={form.subletting} />
+                Subletting OK
               </label>
             </li>
           </ul>
@@ -263,7 +263,7 @@ function RentalForm () {
             <p></p>
             How were repairs conducted?
           </label>
-          <select className='' name='repairsConducted' onChange={handleChange} value={form.repairsConducted}>
+          <select className='' name='repairs' onChange={handleChange} value={form.repairs}>
             <option value="-1">---</option>
             <option value="By contractor">By contractor</option>
             <option value="By landlord">By landlord</option>
@@ -294,7 +294,7 @@ function RentalForm () {
             <option value="Negative">Negative</option>
           </select>
         </fieldset>
-        /
+
       </form>
       <button className='button' onClick={handleSubmit}>Submit</button>
       <div>

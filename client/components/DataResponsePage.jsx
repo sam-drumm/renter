@@ -1,16 +1,46 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { fetchProperties } from '../actions/property'
+import { getUsers } from '../apis/users'
+import { getLoginFn, getRegisterFn } from '../auth0-utils'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function DataResponsePage (props) {
   const { address } = useParams()
   const dispatch = useDispatch()
+
+  const login = getLoginFn(useAuth0)
+  const register = getRegisterFn(useAuth0)
+
   const properties = useSelector(state => state.properties)
   useEffect(() => {
     console.log(address)
     dispatch(fetchProperties(address)) // pass in the input address
   }, [])
+
+  const [nickname, setNickname] = useState([])
+  const user = useSelector(state => state.user)
+  useEffect(() => {
+    getUsers()
+      .then(res => {
+        setNickname(res)
+        return null
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }, [])
+
+  function handleRegister (event) {
+    event.preventDefault()
+    register()
+  }
+
+  function handleLogin (event) {
+    event.preventDefault()
+    login()
+  }
 
   return (
     <section className='properties'>
@@ -102,7 +132,10 @@ function DataResponsePage (props) {
               <br>
               </br>
               <p>
-                This post was created by:
+                This post was created by: {nickname.filter(name => name.auth0_id === user.auth0Id).map(name => name.nickname
+                )
+
+                }
               </p>
             </div>
           )}
@@ -113,10 +146,13 @@ function DataResponsePage (props) {
           <nav className=''>
             <p>
 
-            There are not properties that match the address you have searched for.
+              <section className='sign'>
+              There are not properties that match the address you have searched for.
 If you are a previous tenant at this address, please
-
-              <Link to='/register'> log-in / register</Link> to complete a Rental Form.
+                <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
+                /
+                <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
+              </section>
             </p>
           </nav>
         </div>

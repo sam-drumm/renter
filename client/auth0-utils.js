@@ -36,7 +36,11 @@ export async function cacheUser (useAuth0) {
 }
 
 export function getLoginFn (useAuth0) {
-  return useAuth0().loginWithRedirect
+  const { loginWithRedirect } = useAuth0()
+  const redirectUri = `${window.location.origin}/rentalform`
+  return () => loginWithRedirect({
+    redirectUri
+  })
 }
 
 export function getLogoutFn (useAuth0) {
@@ -64,3 +68,4 @@ export function getRegisterFn (useAuth0) {
 //   // screen_hint: 'signin',
 //   // scope: 'role:member'
 // })
+// ({ screen_hint: 'rentalform' })

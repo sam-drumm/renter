@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 function RentalForm () {
   const property = useSelector(state => state.property)
   const token = useSelector(state => state.user.token)
+
+  console.log(token)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -55,7 +57,7 @@ function RentalForm () {
       console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
       navigate('/')
-      window.alert('Thank you! Your rental form has been submitted.')
+      window.alert('Thank you! Your Rental Form has been submitted.')
       // we want to go to data response page with the report that was just made
     } catch (err) {
       console.error(err)
@@ -289,7 +291,7 @@ function RentalForm () {
             <option value="Negative">Negative</option>
           </select>
         </fieldset>
-
+        /
       </form>
       <button className='button' onClick={handleSubmit}>Submit</button>
       <div>

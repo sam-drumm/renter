@@ -27,9 +27,10 @@ router.get('/', (req, res) => {
 
 // POST /api/v1/properties/protected
 
-router.post('/', checkJwt, checkAdmin, (req, res) => {
-  const { propertyId, address } = req.body
-  const newProperty = { propertyId, address }
+router.post('/', (req, res) => {
+  const { id, address } = req.body
+  const newProperty = { id, address }
+  console.log(newProperty)
   db.addProperty(newProperty)
     .then((property) => {
       res.status(201).json({ property })
@@ -46,3 +47,5 @@ router.post('/', checkJwt, checkAdmin, (req, res) => {
 })
 
 module.exports = router
+
+// checkJwt, checkAdmin,

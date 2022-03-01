@@ -31,12 +31,15 @@ export function clearUsers () {
   }
 }
 
-export function fetchUsers () {
+export function fetchUsers (auth0Id, token) {
+  console.log(auth0Id)
   return dispatch => {
-    return getUsers()
+    return getUsers(auth0Id, token)
       .then(users => {
         dispatch(setUsers(users))
         return null
       })
   }
 }
+
+fetchUsers('auth0|621d3d2b7262c30070ae44cf', 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im1Oej…eSU73vqWOzDy2k0ja9wRfZv02A-aekX0QJMP6kjVeWn3g-3bw')

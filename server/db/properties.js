@@ -6,11 +6,10 @@ function getProperties (db = connection) {
 }
 
 function addProperty (newProperty, db = connection) {
-  const { propertyId, address } = newProperty
+  const { id, address } = newProperty
   return db('properties')
     .insert({
-      id: 1,
-      property_id: propertyId,
+      id,
       address
     })
 }

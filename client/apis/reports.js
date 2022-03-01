@@ -1,12 +1,16 @@
 import request from 'superagent'
 
-export function getReports () {
-  return request.get('/api/v1/reports')
-    .then((res) => res.body)
+const rootUrl = '/api/v1'
+
+export function getProperties (address) {
+  return request.get(rootUrl + '/reports?address=' + address)
+    .then(res => {
+      return res.body.report
+    })
 }
 
-export function postReports (report) {
-  return request.post('/api/v1/reports')
-    .send(report)
-    .then((res) => res.body)
+export function addProperties (property, token) {
+  return request.post(rootUrl + '/reports')
+    .set('authorization', 'Bearer ' + token)
+    .send(property)
 }

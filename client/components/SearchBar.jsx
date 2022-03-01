@@ -13,10 +13,10 @@ export default function SearchBar ({ placeholder }) {
     const searchWord = event.target.value
     // address typed in by the user in search bar
     setWordEntered(searchWord)
-    const addresses = await getAddresses(searchWord)
     if (searchWord === '') {
       setFilteredData([])
     } else {
+      const addresses = await getAddresses(searchWord)
       setFilteredData(addresses)
     }
   }

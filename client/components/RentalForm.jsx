@@ -6,11 +6,15 @@ import { useNavigate } from 'react-router-dom'
 function RentalForm () {
   const property = useSelector(state => state.property)
   const token = useSelector(state => state.user.token)
+  const auth0Id = useSelector(state => state.user.auth0Id)
+
+  console.log(token)
   const dispatch = useDispatch()
-  const history = useNavigate()
+  const navigate = useNavigate()
 
   const [form, setForm] = useState({
-    addressAPI: '',
+    auth0Id,
+    address: '',
     rooms1: '-1',
     rooms2: '-1',
     rentTotal: '',
@@ -31,14 +35,15 @@ function RentalForm () {
     smoking: false,
     subletting: false,
     repairsResponsive: '-1',
-    repairsConducted: '-1',
+    repairs: '-1',
     notice: '-1',
     relationship: '-1'
   })
 
   useEffect(() => {
     setForm({
-      addressAPI: property.addressAPI
+      ...form,
+      address: property.address
     })
   }, [property])
 
@@ -54,7 +59,9 @@ function RentalForm () {
     try {
       console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
-      history('/')
+      navigate('/')
+      window.alert('Thank you! Your Rental Form has been submitted.')
+      // we want to go to data response page with the report that was just made
     } catch (err) {
       console.error(err)
     }
@@ -67,11 +74,13 @@ function RentalForm () {
       <p>Please fill in this form to add to the Renter database.</p>
       <form>
         <fieldset>
-          <label htmlFor='auth0Id'>auth0Id</label>
+          {/* <label htmlFor='auth0Id'>auth0Id</label> */}
           <label>
-            Address
+            Address:
           </label>
-          <input type="text" placeholder="address api" value={form.addressAPI} onChange={handleChange} disabled={true}/>
+          <input type="text" rows='5' cols='100' placeholder="Please enter the rental address" name='address' value={form.address} onChange={handleChange} />
+          <p>Format example: 12 Richmond Road, Ponsonby, Auckland</p>
+
         </fieldset>
         <fieldset>
           <h2>Rental details</h2>
@@ -168,47 +177,72 @@ function RentalForm () {
         </fieldset>
         <fieldset>
           <h2>Amenities</h2>
-          <label>
-            Heat Pump
-            <input type="checkbox" name="heatPump" onChange={handleChange} value={form.heatPump} />
-          </label>
-          <label>
-            <p></p>
-            Insulation
-            <input type="checkbox" name="insulation" onChange={handleChange} value={form.insulation} />
-          </label>
-          <label>
-            Fridge
-            <input type="checkbox" name="fridge" onChange={handleChange} value={form.fridge} />
-          </label>
-          <label>
-            Oven
-            <input type="checkbox" name="Oven" onChange={handleChange} value={form.oven} />
-          </label>
-          <label>
-            Smoke Alarm
-            <input type="checkbox" name="smokeAlarm" onChange={handleChange} value={form.smokeAlarm} />
-          </label>
-          <label>
-            Fire extinguisher
-            <input type="checkbox" name="fireExtinguisher" onChange={handleChange} value={form.fireExtinguisher} />
-          </label>
-          <label>
-            Curtains in bedroom
-            <input type="checkbox" name="curtains" onChange={handleChange} value={form.curtains} />
-          </label>
-          <label>
-            Pets OK
-            <input type="checkbox" name="pets" onChange={handleChange} value={form.pets} />
-          </label>
-          <label>
-            Smoking OK
-            <input type="checkbox" name="smoking" onChange={handleChange} value={form.smoking} />
-          </label>
-          <label>
-            Subletting OK
-            <input type="checkbox" name="subletting" onChange={handleChange} value={form.subletting} />
-          </label>
+          <ul>
+            <li>
+              <label>
+                <input type="checkbox" name="heatPump" onChange={handleChange} value={form.heatPump} />
+                Heat Pump
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="insulation" onChange={handleChange} value={form.insulation} />
+                Insulation
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="fridge" onChange={handleChange} value={form.fridge} />
+                Fridge
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="oven" onChange={handleChange} value={form.oven} />
+                Oven
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="smokeAlarm" onChange={handleChange} value={form.smokeAlarm} />
+                Smoke Alarm
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="fireExtinguisher" onChange={handleChange} value={form.fireExtinguisher} />
+                Fire extinguisher
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="curtains" onChange={handleChange} value={form.curtains} />
+                Curtains in bedroom
+              </label>
+            </li>
+          </ul>
+          <h3>Additional terms</h3>
+          <ul>
+            <li>
+
+              <label>
+                <input type="checkbox" name="pets" onChange={handleChange} value={form.pets} />
+                Pets OK
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="smoking" onChange={handleChange} value={form.smoking} />
+                Smoking OK
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="subletting" onChange={handleChange} value={form.subletting} />
+                Subletting OK
+              </label>
+            </li>
+          </ul>
         </fieldset>
         <fieldset>
           <h2>Relationship with landlord/property manager</h2>
@@ -229,7 +263,7 @@ function RentalForm () {
             <p></p>
             How were repairs conducted?
           </label>
-          <select className='' name='repairsConducted' onChange={handleChange} value={form.repairsConducted}>
+          <select className='' name='repairs' onChange={handleChange} value={form.repairs}>
             <option value="-1">---</option>
             <option value="By contractor">By contractor</option>
             <option value="By landlord">By landlord</option>

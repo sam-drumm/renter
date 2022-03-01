@@ -1,13 +1,12 @@
 exports.up = function (knex) {
   return knex.schema.createTable('reports', table => {
     table.increments('id')
-    table.integer('property_id').references('properties.id')
     table.integer('user_id').references('users.id')
-    table.string('address_API').references('properties.address')
+    table.string('address')
     table.integer('rooms_1')
     table.integer('rooms_2')
     table.integer('rent_total')
-    table.boolean('utilities')
+    table.string('utilities')
     table.integer('year_1')
     table.integer('year_2')
     table.string('property_managed_by')

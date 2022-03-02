@@ -12,28 +12,31 @@ import DataResponsePage from './DataResponsePage'
 import LandingPage from './LandingPage'
 import Footer from './Footer'
 
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import myNewTheme from '../styles/theme'
+import theme, { Example } from './DarkMode'
 
 function App () {
   cacheUser(useAuth0)
 
   return (
     <>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <ChakraProvider theme={myNewTheme}>
         <Header />
-          <Routes>
-            <Route path='/' element={
-              <>
-                <LandingPage/>
-                <Footer/>
-              </>} />
-            <Route path='/' element={<PingRoutes/>} />
-            <Route path='/users' element={<Users/>} />
-            <Route path='/register' element={<Registration/>} />
-            <Route path='/reports/:address' element={<DataResponsePage/>} />
-            <Route path='/rentalform' element={<RentalForm/>} />
-          </Routes>
+        <Example />
+        <Routes>
+          <Route path='/' element={
+            <>
+              <LandingPage/>
+              <Footer/>
+            </>} />
+          <Route path='/' element={<PingRoutes/>} />
+          <Route path='/users' element={<Users/>} />
+          <Route path='/register' element={<Registration/>} />
+          <Route path='/reports/:address' element={<DataResponsePage/>} />
+          <Route path='/rentalform' element={<RentalForm/>} />
+        </Routes>
       </ChakraProvider>
     </>
 

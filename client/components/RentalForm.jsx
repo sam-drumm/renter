@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addProperty } from '../actions/property'
 import { useNavigate } from 'react-router-dom'
 import { setWaiting, clearWaiting } from '../actions/waiting'
+import AlertMessage from './AlertMessage'
 
 function RentalForm () {
   const property = useSelector(state => state.property)
@@ -12,6 +13,7 @@ function RentalForm () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const [message, setMessage] = useState('')
   const [form, setForm] = useState({
     auth0Id: auth0Id,
     address: '',
@@ -58,12 +60,13 @@ function RentalForm () {
   async function handleSubmit (event) {
     event.preventDefault()
     dispatch(setWaiting())
+    setMessage('Your Renter form is being submitted.')
     try {
-      dispatch(addProperty(form, token))
-      navigate('/')
-      window.alert('Thank you! Your Renter form has been submitted.')
-      dispatch(clearWaiting())
-      // we want to go to data response page with the report that was just made
+      await setTimeout(() => {
+        dispatch(addProperty(form, token))
+        dispatch(clearWaiting())
+        navigate('/')
+      }, 3500)
     } catch (err) {
       console.error(err)
     }
@@ -296,9 +299,14 @@ function RentalForm () {
             <option value="Negative">Negative</option>
           </select>
         </fieldset>
-
+        <div>
+          {message && <AlertMessage message={message} />}
+        </div>
+        <button className='button' onClick={handleSubmit}>
+        Submit
+        </button>
       </form>
-      <button className='button' onClick={handleSubmit}>Submit</button>
+
       <div className='disclaimer'>
         Disclaimer:
         <p>Length of tenancy is for internal use only to verify that the data remains up to date and within the last 5 years</p>

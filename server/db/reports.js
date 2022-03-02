@@ -12,6 +12,13 @@ function getReportsByAddress (address, db = connection) {
     .select()
 }
 
+function getReportById (id, db = connection) {
+  return db('reports')
+    .where('id', id)
+    .select()
+    .first()
+}
+
 function getReportsById (id, db = connection) {
   return db('reports')
     .where('report.id', id)
@@ -81,5 +88,6 @@ module.exports = {
   getReportsByAddress,
   getAddresses,
   getReportsById,
-  addReport
+  addReport,
+  getReportById
 }

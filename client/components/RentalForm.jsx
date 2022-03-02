@@ -224,7 +224,7 @@ function RentalForm () {
               </label>
             </li>
           </ul>
-          <h2>Additional terms</h2>
+          <h3>Additional terms</h3>
           <ul>
             <li>
 
@@ -248,7 +248,7 @@ function RentalForm () {
           </ul>
         </fieldset>
         <fieldset>
-          <h2>Relationship with landlord/property manager</h2>
+          <h3>Relationship with landlord/property manager</h3>
           <label>
             <p></p>
             How responsive was the landlord/property manager to repairs?

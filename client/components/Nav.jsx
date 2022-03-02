@@ -27,7 +27,6 @@ function Nav () {
     event.preventDefault()
     register()
   }
-
   return (
     <>
       <Box>

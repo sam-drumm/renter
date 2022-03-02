@@ -46,6 +46,7 @@ function Registration () {
   }
 
   return (
+
     <section className='form'>
       <h2>Register Profile</h2>
       <form className='registration'>
@@ -81,6 +82,7 @@ function Registration () {
       </form>
       <p>Please note: your nickname is posted as the author of the Renter form.</p>
     </section>
+
   )
 }
 

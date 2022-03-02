@@ -2,7 +2,7 @@ import { SET_PROPERTY, CLEAR_PROPERTY } from '../actions/property'
 
 const emptyProperty = {
   id: null,
-  addressAPI: null,
+  address: null,
   rooms1: '',
   rooms2: '',
   rentTotal: '',
@@ -22,7 +22,7 @@ const emptyProperty = {
   pets: false,
   smoking: false,
   subletting: false,
-  repairsConducted: '-1',
+  repairs: '-1',
   repairsResponsive: '-1',
   notice: '-1',
   relationship: '-1'

@@ -4,7 +4,6 @@ exports.up = function (knex) {
     table.string('auth0_id')
     table.string('nickname')
     table.string('email')
-    table.string('description')
   })
 }
 

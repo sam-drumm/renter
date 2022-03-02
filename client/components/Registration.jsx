@@ -35,7 +35,7 @@ function Registration () {
     // registerUser(form, authUser, history.push)
     try {
       await addUser(form)
-      history('/')
+      history('/rentalform')
     } catch (error) {
       console.error(error)
     }

@@ -5,7 +5,7 @@ import WaitIndicator from './WaitIndicator'
 
 export default function Header () {
   return (
-    <header className='header'>
+    <header>
       <div className='flex-container container'>
         <WaitIndicator />
         <NavBar />

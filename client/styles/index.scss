@@ -108,8 +108,13 @@ a {
 
 /*-------styling added by Ningyi----------*/
 
+.search {
+  margin-top: 350px;
+  margin-right: 80px;
+}
+
 .searchInputs {
-  margin: top 105px;
+  margin: top;
   display: flex;
   border: 1px solid #CBD5E0;
   box-sizing: border-box;
@@ -119,7 +124,8 @@ a {
 .search input {
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 24px;
+  margin-top: 10px;
   padding: 15px;
   height: 30px;
   width: 854px;
@@ -129,6 +135,7 @@ a {
   height: 60px;
   width: 50px;
   background-color: none;
+  padding-right: 15px;
   color: #148FE8;
   display: grid;
   place-items: center;
@@ -162,6 +169,7 @@ input:focus {
 
 .dataItem p {
   margin-left: 10px;
+  font-size: 24px;
 }
 a {
   text-decoration: none;
@@ -174,3 +182,5 @@ a:hover {
 #clearBtn {
   cursor: pointer;
 }
+
+

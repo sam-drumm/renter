@@ -2,15 +2,18 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
 import { Route, Routes } from 'react-router-dom'
+
 import Header from './Header'
-import SearchBar from './SearchBar'
 import PingRoutes from './PingRoutes'
 import Registration from './Registration'
 import RentalForm from './RentalForm'
 import Users from './Users'
+import DataResponsePage from './DataResponsePage'
+import LandingPage from './LandingPage'
+import Footer from './Footer'
+
 import { ChakraProvider } from '@chakra-ui/react'
-// import NavBar from './Nav/NavBar'
-// import DataResponseRedo from './DataResponseRedo'
+import myNewTheme from '../styles/theme'
 
 function App () {
   cacheUser(useAuth0)
@@ -18,16 +21,19 @@ function App () {
   return (
 
     <>
-      <ChakraProvider>
+      <ChakraProvider theme={myNewTheme}>
         <Header />
         <main className='container margin-container flex-container centre-flex'>
           <Routes>
-            <Route path='/' element={<SearchBar/>} placeholder='Start by typing the address of the rental property...' />
+            <Route path='/' element={
+              <>
+                <LandingPage/>
+                <Footer/>
+              </>} />
             <Route path='/' element={<PingRoutes/>} />
-            {/* <Route path='/' element={<NavBar/>} /> */}
             <Route path='/users' element={<Users/>} />
             <Route path='/register' element={<Registration/>} />
-            {/* <Route path='/reports/:address' element={<DataResponseRedo/>} /> */}
+            <Route path='/reports/:address' element={<DataResponsePage/>} />
             <Route path='/rentalform' element={<RentalForm/>} />
           </Routes>
         </main>
@@ -36,5 +42,5 @@ function App () {
 
   )
 }
-
+// change to address id
 export default App

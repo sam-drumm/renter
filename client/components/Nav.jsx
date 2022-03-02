@@ -1,32 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+<<<<<<< HEAD
 import { getUsers } from '../apis/users'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Box } from '@chakra-ui/react'
+=======
+import { useSelector } from 'react-redux'
+>>>>>>> 46bfbf667d39e4219ecb25fe57c44654adb9110a
 
 function Nav () {
   const user = useSelector(state => state.user)
+
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
-
-  const [nickname, setNickname] = useState('')
-
-  useEffect(() => {
-    if (user.auth0Id) {
-      getUsers()
-        .then(res => {
-          setNickname(res)
-          return null
-        })
-        .catch(err => {
-          console.error(err)
-        })
-    }
-  }, [])
 
   function handleLogin (event) {
     event.preventDefault()
@@ -44,33 +33,25 @@ function Nav () {
   }
 
   return (
-    <>
-    <Box>
-     <IfAuthenticated>
-   
-         { nickname &&
-          <Text>Welcome {nickname}!</Text>
-          }
-      <Breadcrumb color='teal' fontSize='2xl' m={10}>
-      <BreadcrumbItem>
-        <BreadcrumbLink as={Link} to='/' onClick={handleLogoff}>Log out</BreadcrumbLink>
-      </BreadcrumbItem>
-      </Breadcrumb>
-    </IfAuthenticated>
-   
-    <IfNotAuthenticated>
-    <Breadcrumb color='teal' fontSize='2xl' m={10}>
-    <BreadcrumbItem>
-        <BreadcrumbLink as={Link} to='/' onClick={handleLogin}>Sign In</BreadcrumbLink>
-      </BreadcrumbItem>
+    <nav className='nav'>
 
-      <BreadcrumbItem>
-        <BreadcrumbLink as={Link} to='/' onClick={handleRegister}>Register</BreadcrumbLink>
-      </BreadcrumbItem>
-      </Breadcrumb>
-    </IfNotAuthenticated>
-    </Box>
-    </>
+      <Link to="/">
+        <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
+      </Link>
+
+      <IfAuthenticated>
+        <p>Welcome {user.nickname}!</p>
+
+        <a href to='/rentalform' className='nav-link'>Add a Property</a>
+        <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
+      </IfAuthenticated>
+
+      <IfNotAuthenticated>
+        <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
+        <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
+      </IfNotAuthenticated>
+
+    </nav >
   )
 }
 

@@ -59,7 +59,8 @@ router.get('/:id', async (req, res) => {
 
   try {
     const user = await db.getUser(auth0Id)
-    res.json(user)
+    console.log('in route user', user[0])
+    res.json(user[0])
     // const roles = await getUserRoles(id)
     // res.json({ roles })
   } catch (error) {

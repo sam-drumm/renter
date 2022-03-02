@@ -21,11 +21,9 @@ export async function cacheUser (useAuth0) {
       const token = await getAccessTokenSilently()
       const existingUser = await getUser(user.sub, token)
       if (existingUser) {
-        console.log('user exists in db')
         const { id, nickname } = existingUser
         saveUser({ id, auth0Id: user.sub, nickname, email: user.name, token })
       } else {
-        console.log('user does not exist in db')
         saveUser({ auth0Id: user.sub, email: user.name, token })
       }
     } catch (err) {

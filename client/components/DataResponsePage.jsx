@@ -15,9 +15,7 @@ function DataResponsePage (props) {
 
   const properties = useSelector(state => state.properties)
   useEffect(() => {
-    console.log(address)
     dispatch(fetchProperties(address))
-    console.log('properties', properties)// pass in the input address
   }, [])
 
   const [nickname, setNickname] = useState([])
@@ -147,7 +145,7 @@ function DataResponsePage (props) {
             <p>
 
               <section className='sign'>
-              There are not properties that match the address you have searched for.
+              There are no properties that match the address you have searched for.
 If you are a previous tenant at this address, please
                 <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
                 /

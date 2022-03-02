@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import Header from './Header'
 import PingRoutes from './PingRoutes'
-import Registration from './Draft'
+import Registration from './Registration'
 import RentalForm from './RentalForm'
 import Users from './Users'
 import DataResponsePage from './DataResponsePage'
@@ -19,24 +19,21 @@ function App () {
   cacheUser(useAuth0)
 
   return (
-
     <>
       <ChakraProvider theme={myNewTheme}>
         <Header />
-        <main className='container margin-container flex-container centre-flex'>
-          <Routes>
-            <Route path='/' element={
-              <>
-                <LandingPage/>
-                <Footer/>
-              </>} />
-            <Route path='/' element={<PingRoutes/>} />
-            <Route path='/users' element={<Users/>} />
-            <Route path='/register' element={<Registration/>} />
-            <Route path='/reports/:address' element={<DataResponsePage/>} />
-            <Route path='/rentalform' element={<RentalForm/>} />
-          </Routes>
-        </main>
+        <Routes>
+          <Route path='/' element={
+            <>
+              <LandingPage/>
+              <Footer/>
+            </>} />
+          <Route path='/' element={<PingRoutes/>} />
+          <Route path='/users' element={<Users/>} />
+          <Route path='/register' element={<Registration/>} />
+          <Route path='/reports/:address' element={<DataResponsePage/>} />
+          <Route path='/rentalform' element={<RentalForm/>} />
+        </Routes>
       </ChakraProvider>
     </>
 

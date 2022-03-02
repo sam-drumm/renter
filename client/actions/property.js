@@ -45,7 +45,6 @@ export function addProperty (property, token) {
   return dispatch => {
     return addProperties(property, token)
       .then(property => {
-        console.log('this is how your data:property looks in action', property)
         dispatch(setProperty(property))
         return null
       })

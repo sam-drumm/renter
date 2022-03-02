@@ -59,7 +59,6 @@ function RentalForm () {
     event.preventDefault()
     dispatch(setWaiting())
     try {
-      console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
       navigate('/')
       window.alert('Thank you! Your Renter form has been submitted.')
@@ -81,8 +80,8 @@ function RentalForm () {
           <div className='form-search-bar'>
             <h2>Address:</h2>
           </div>
-          <input type="text" rows='5' cols='100' placeholder="Please enter the rental address" name='address' value={form.address} onChange={handleChange} />
-          {/* <p>Format example: 12 Richmond Road, Ponsonby, Auckland</p> */}
+          <p>Format example: 12 Richmond Road, Ponsonby, Auckland</p>
+          <input type="text" cols='10' placeholder="Please enter the rental address" name='address' value={form.address} onChange={handleChange} />
 
         </fieldset>
         <fieldset>

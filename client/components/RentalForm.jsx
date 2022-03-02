@@ -62,7 +62,7 @@ function RentalForm () {
       console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
       navigate('/')
-      window.alert('Thank you! Your Rental Form has been submitted.')
+      window.alert('Thank you! Your Renter form has been submitted.')
       dispatch(clearWaiting())
       // we want to go to data response page with the report that was just made
     } catch (err) {

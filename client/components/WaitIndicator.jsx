@@ -9,9 +9,9 @@ export default function WaitIndicator () {
       <div className="waitIndicator">
         { waiting
           ? <>
-            <img src="/images/loadingIcon.png" alt="loading indicator" className="waitIndicator--img"/>
-            <img src="/images/loadingIcon.png" alt="loading indicator" className="waitIndicator--img"/>
-            <img src="/images/loadingIcon.png" alt="loading indicator" className="waitIndicator--img"/>
+            <img src="./images/house_search.png" alt="loading indicator" className="waitIndicator--img"/>
+            <img src="./images/house_search.png" alt="loading indicator" className="waitIndicator--img"/>
+            <img src="./images/house_search.png" alt="loading indicator" className="waitIndicator--img"/>
           </>
           : '\u00a0' }
       </div>

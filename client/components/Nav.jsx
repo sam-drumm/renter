@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getUsers } from '../apis/users'
+// import { getUsers } from '../apis/users'
+import { IoClose } from 'react-icons/io5'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 function Nav () {
-  const user = useSelector(state => state.user)
+  const [open, setOpen] = useState(false)
+  // const user = useSelector(state => state.user)
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
 
-  const [nickname, setNickname] = useState('')
+  // const [nickname, setNickname] = useState('')
 
-  useEffect(() => {
-    if (user.auth0Id) {
-      getUsers()
-        .then(res => {
-          setNickname(res)
-          return null
-        })
-        .catch(err => {
-          console.error(err)
-        })
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (user.auth0Id) {
+  //     getUsers()
+  //       .then(res => {
+  //         setNickname(res.nickname)
+  //         return null
+  //       })
+  //       .catch(err => {
+  //         console.error(err)
+  //       })
+  //   }
+  // }, [])
 
   function handleLogin (event) {
     event.preventDefault()
@@ -42,31 +44,61 @@ function Nav () {
     register()
   }
 
+  const toggleMenu = () => {
+    setOpen(!open)
+  }
+
   return (
     <nav className='nav'>
-      <Link to="/">
-        <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
-      </Link>
-      <section className='nav-item'>
+      {open && <div className='nav-menu-toggle' onClick={toggleMenu}>
+
+        <Link to="/">
+          <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
+        </Link>
+
         <IfAuthenticated>
-
-          { nickname &&
-          <p>Welcome {nickname}!</p>
-          }
-          <section className='sign'>
-            <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
-          </section>
-
+          <a href to="/" className='nav-link'>Home</a>
+          <a href to="/rentalform/" className='nav-link'>Add a Property</a>
+          <a href to="/" className='nav-link'>Your Properties</a>
+          <a href to="/" className='nav-link'>Your Profile</a>
+          <a href to="/" className='nav-link'>More about Renter</a>
+          <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
         </IfAuthenticated>
+
         <IfNotAuthenticated>
-
-          <section className='sign'>
-            <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-            <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
-          </section>
-
+          <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
+          <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
         </IfNotAuthenticated>
-      </section>
+
+        <div className='close-btn' onClick={toggleMenu} ><IoClose/></div>
+      </div>
+
+      }
+      {!open && <div className='nav-menu'>
+
+        <Link to="/">
+          <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
+        </Link>
+
+        <IfAuthenticated>
+          <a href to="/" className='nav-link'>Home</a>
+          <a href to="/rentalform/" className='nav-link'>Add a Property</a>
+          <a href to="/" className='nav-link'>Your Properties</a>
+          <a href to="/" className='nav-link'>Your Profile</a>
+          <a href to="/" className='nav-link'>More about Renter</a>
+          <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
+        </IfAuthenticated>
+
+        <IfNotAuthenticated>
+          <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
+          <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
+        </IfNotAuthenticated>
+
+        <div className='hamburger' onClick={toggleMenu} ><GiHamburgerMenu/></div>
+      </div>
+
+      }
+
     </nav >
   )
 }

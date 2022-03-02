@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import Header from './Header'
 import PingRoutes from './PingRoutes'
-import Registration from './Registration'
+import Registration from './Draft'
 import RentalForm from './RentalForm'
 import Users from './Users'
 import DataResponsePage from './DataResponsePage'

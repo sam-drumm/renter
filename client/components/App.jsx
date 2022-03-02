@@ -19,7 +19,6 @@ function App () {
   cacheUser(useAuth0)
 
   return (
-
     <>
       <ChakraProvider theme={myNewTheme}>
         <Header />

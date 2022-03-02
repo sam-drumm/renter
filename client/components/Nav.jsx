@@ -33,7 +33,7 @@ function Nav () {
     <>
     <Box>
         <IfAuthenticated>
-        <Text>Welcome {user.nickname}!</Text>
+        <Text fontSize='2xl' color='pink' display='flex' justifyContent='flex-end'  mx={10}>Welcome {user.nickname}!</Text>
         <Breadcrumb color='teal' fontSize='2xl' m={10} display='flex' justifyContent='flex-end'separator={<ChevronRightIcon color='pink' />}>
         <BreadcrumbItem>
         <BreadcrumbLink as={Link} to='/'>Home</BreadcrumbLink>

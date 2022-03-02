@@ -72,16 +72,17 @@ function RentalForm () {
 
   return (
 
-    <div className='form-wrapper'>
+    <div className='form-box'>
       <h1>Rental Form</h1>
-      <p>Please fill in this form to add to the Renter database.</p>
+      <h4 className='form-title'>Please fill in this form to add to the Renter database.</h4>
+
       <form>
         <fieldset>
-          <label>
-            Address:
-          </label>
-          <input type="text" rows='5' cols='100' placeholder="Please enter the rental address" name='address' value={form.address} onChange={handleChange} />
+          <div className='form-search-bar'>
+            <h2>Address:</h2>
+          </div>
           <p>Format example: 12 Richmond Road, Ponsonby, Auckland</p>
+          <input type="text" cols='10' placeholder="Please enter the rental address" name='address' value={form.address} onChange={handleChange} />
 
         </fieldset>
         <fieldset>
@@ -89,7 +90,7 @@ function RentalForm () {
           <label>
             As a tenant, I have rented
           </label>
-          <select className='' name='rooms1' onChange={handleChange} value={form.rooms1}>
+          <select className='dropbox' name='rooms1' onChange={handleChange} value={form.rooms1}>
             <option value="-1">---</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -98,9 +99,9 @@ function RentalForm () {
             <option value="5">5</option>
           </select>
           <label>
-            out of
+            rooms out of
           </label>
-          <select className='' name='rooms2' onChange={handleChange} value={form.rooms2}>
+          <select className='select' name='rooms2' onChange={handleChange} value={form.rooms2}>
             <option value="-1">---</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -109,19 +110,19 @@ function RentalForm () {
             <option value="5 +">5 +</option>
           </select>
           <label>
-              in total.
+              rooms in total.
           </label>
 
           <label>
             <p></p>
             Total rent paid per week $
-            <input cols='10' className='' name='rentTotal' type="number" onChange={handleChange} value={form.rentTotal} />
+            <input cols='10' className='text' name='rentTotal' type="number" onChange={handleChange} value={form.rentTotal} />
           </label>
           <label>
             <p></p>
             Did rent include utilities? (e.g. water, power, internet)
           </label>
-          <select className='' name='utilities' onChange={handleChange} value={form.utilities}>
+          <select className='select' name='utilities' onChange={handleChange} value={form.utilities}>
             <option value="-1">---</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -131,7 +132,7 @@ function RentalForm () {
             <p></p>
             Length of tenancy
           </label>
-          <select className='' name='years1' onChange={handleChange} value={form.years1}>
+          <select className='select' name='years1' onChange={handleChange} value={form.years1}>
             <option value="-1">---</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
@@ -142,7 +143,7 @@ function RentalForm () {
           <label>
             to
           </label>
-          <select className='' name='years2' onChange={handleChange} value={form.years2}>
+          <select className='select' name='years2' onChange={handleChange} value={form.years2}>
             <option value="-1">---</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
@@ -154,7 +155,7 @@ function RentalForm () {
             <p></p>
             Who was the rental property managed by?
           </label>
-          <select className='' name='managedBy' onChange={handleChange} value={form.managedBy}>
+          <select className='select' name='managedBy' onChange={handleChange} value={form.managedBy}>
             <option value="-1">---</option>
             <option value="Landlord">Landlord</option>
             <option value="Property Manager">Property Manager</option>
@@ -164,7 +165,7 @@ function RentalForm () {
             <p></p>
             How often did the rent increase?
           </label>
-          <select className='' name='rentIncrease' onChange={handleChange} value={form.rentIncrease}>
+          <select className='select' name='rentIncrease' onChange={handleChange} value={form.rentIncrease}>
             <option value="-1">---</option>
             <option value="Never">Never</option>
             <option value="Once a year">Once a year</option>
@@ -223,7 +224,7 @@ function RentalForm () {
               </label>
             </li>
           </ul>
-          <h3>Additional terms</h3>
+          <h2>Additional terms</h2>
           <ul>
             <li>
 
@@ -252,7 +253,7 @@ function RentalForm () {
             <p></p>
             How responsive was the landlord/property manager to repairs?
           </label>
-          <select className='' name='repairsResponsive' onChange={handleChange} value={form.repairsResponsive}>
+          <select className='select' name='repairsResponsive' onChange={handleChange} value={form.repairsResponsive}>
             <option value="-1">---</option>
             <option value="Very responsive">Very responsive</option>
             <option value="Somewhat responsive">Somewhat responsive</option>
@@ -265,7 +266,7 @@ function RentalForm () {
             <p></p>
             How were repairs conducted?
           </label>
-          <select className='' name='repairs' onChange={handleChange} value={form.repairs}>
+          <select className='select' name='repairs' onChange={handleChange} value={form.repairs}>
             <option value="-1">---</option>
             <option value="By contractor">By contractor</option>
             <option value="By landlord">By landlord</option>
@@ -275,7 +276,7 @@ function RentalForm () {
             <p></p>
             Were tenants provided sufficient notice before Landlord/Property Manager arrived at the property?
           </label>
-          <select className='' name='notice' onChange={handleChange} value={form.notice}>
+          <select className='select' name='notice' onChange={handleChange} value={form.notice}>
             <option value="-1">---</option>
             <option value="Always">Always</option>
             <option value="Sometimes">Sometimes</option>
@@ -287,7 +288,7 @@ function RentalForm () {
             <p></p>
             Rate your relationship with the Landlord/Property Manager?
           </label>
-          <select className='' name='relationship' onChange={handleChange} value={form.relationship}>
+          <select className='select' name='relationship' onChange={handleChange} value={form.relationship}>
             <option value="-1">---</option>
             <option value="Positive">Positive</option>
             <option value="Somewhat positive">Somewhat positive</option>
@@ -299,8 +300,8 @@ function RentalForm () {
 
       </form>
       <button className='button' onClick={handleSubmit}>Submit</button>
-      <div>
-        <h3>Disclaimer:</h3>
+      <div className='disclaimer'>
+        Disclaimer:
         <p>Length of tenancy is for internal use only to verify that the data remains up to date and within the last 5 years</p>
       </div>
 

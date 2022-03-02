@@ -3,12 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { Link } from 'react-router-dom'
-<<<<<<< HEAD
-import { getUsers } from '../apis/users'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Box } from '@chakra-ui/react'
-=======
 import { useSelector } from 'react-redux'
->>>>>>> 46bfbf667d39e4219ecb25fe57c44654adb9110a
 
 function Nav () {
   const user = useSelector(state => state.user)

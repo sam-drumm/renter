@@ -11,10 +11,16 @@ module.exports = {
 
   test: {
     client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
       filename: ':memory:'
     },
-    useNullAsDefault: true
+    seeds: {
+      directory: path.join(__dirname, 'seeds')
+    },
+    migrations: {
+      directory: path.join(__dirname, 'migrations')
+    }
   },
 
   production: {
@@ -29,3 +35,4 @@ module.exports = {
     }
   }
 }
+

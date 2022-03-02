@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Box, Text } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
-
+import WaitIndicator from './WaitIndicator'
 
 function Nav () {
   const user = useSelector(state => state.user)
@@ -31,10 +31,14 @@ function Nav () {
   }
   return (
     <>
+
       <Box>
         <IfAuthenticated>
           <Text fontSize='2xl' color='pink' display='flex' justifyContent='flex-end' mx={10}>Welcome {user.nickname}!</Text>
           <Breadcrumb color='teal' fontSize='2xl' m={10} display='flex' justifyContent='flex-end' separator={<ChevronRightIcon color='pink' />}>
+            <BreadcrumbItem>
+              <WaitIndicator/>
+            </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbLink as={Link} to='/'>Home</BreadcrumbLink>
             </BreadcrumbItem>
@@ -46,7 +50,6 @@ function Nav () {
             </BreadcrumbItem>
           </Breadcrumb>
         </IfAuthenticated>
-
         <IfNotAuthenticated>
           <Breadcrumb color='teal' fontSize='2xl' m={10} display='flex' justifyContent='flex-end'separator={<ChevronRightIcon color='pink' />}>
             <BreadcrumbItem>

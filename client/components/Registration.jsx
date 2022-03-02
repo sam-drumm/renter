@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
 import { setWaiting, clearWaiting } from '../actions/waiting'
+import WaitIndicator from './WaitIndicator'
 
 function Registration () {
   const user = useSelector(state => state.user)
@@ -37,9 +38,11 @@ function Registration () {
     dispatch(setWaiting())
     // registerUser(form, authUser, history.push)
     try {
-      await addUser(form)
-      history('/rentalform')
-      dispatch(clearWaiting())
+      await setTimeout(() => {
+        addUser(form)
+        history('/rentalform')
+        dispatch(clearWaiting())
+      }, 500)
     } catch (error) {
       console.error(error)
     }
@@ -78,6 +81,7 @@ function Registration () {
           onClick={handleClick}
         >
           Register
+          <WaitIndicator/>
         </button>
       </form>
       <p>Please note: your nickname is posted as the author of the Renter form.</p>

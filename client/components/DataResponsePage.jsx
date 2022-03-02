@@ -5,6 +5,11 @@ import { fetchProperties } from '../actions/property'
 import { getUsers } from '../apis/users'
 import { getLoginFn, getRegisterFn } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
+import { Box, Text, Heading, List,
+  ListItem,
+  ListIcon,
+  UnorderedList } from '@chakra-ui/react'
+  import HomeIcon from '@mui/icons-material/Home'
 
 function DataResponsePage (props) {
   const { address } = useParams()
@@ -44,121 +49,108 @@ function DataResponsePage (props) {
   }
 
   return (
-    <section className='properties'>
+    <Box ml={20} mt={30}>
 
       {properties.length > 0
-        ? <div> {console.log(properties)}
+        ? <Box> {console.log(properties)}
           {properties.map(property =>
-            <div key={property.id}>
-              <p className='title'>Search results:</p>
-              <br>
-              </br>
-              <h2>Rental Details</h2>
-              <p>
-              Rental address:  {property.address}
-              </p>
-              <p>
-             The tenant rented: {property.rooms_1} out of {property.rooms_2} rooms in total
-              </p>
-              <p>
-              Total rent paid per week ${property.rent_total}
-              </p>
-              <p>
-              Were utilities included in the rent? (e.g. water, power, internet)  {property.utilities}
-              </p>
-              <p>
-              The rental property was managed by:  {property.property_managed_by}
-              </p>
-              <p>
-             The rent increased: {property.rent_increase}
-              </p>
-              <p>
-            The average rent increase was ${property.ave_increase}
-              </p>
-              <br>
-              </br>
-              <h2>Amentities</h2>
-              <ul>
-                <li>
-                Heat pump: {property.heat_pump ? 'Yes' : 'No'}
-                </li>
-                <li>
-               Insulation:  {property.insulation ? 'Yes' : 'No'}
-                </li>
-                <li>
-                Fridge:   {property.fridge ? 'Yes' : 'No'}
-                </li>
-                <li>
-                Curtains in the bedroom: {property.curtains ? 'Yes' : 'No'}
-                </li>
-                <li>
-                 Oven:  {property.oven ? 'Yes' : 'No'}
-                </li>
-                <li>
-                Smoke alarm: {property.smoke_alarm ? 'Yes' : 'No'}
-                </li>
-                <li>
-                 Fire extinguisher: {property.fire_extinguisher ? 'Yes' : 'No'}
-                </li>
-              </ul>
-              <h3>Additional terms</h3>
-              <ul>
-                <li>
-               Pets OK:  {property.pets_ok ? 'Yes' : 'No'}
-                </li>
-                <li>
-                Smoking OK: {property.smoking_ok ? 'Yes' : 'No'}
-                </li>
-                <li>
-                 Subletting OK: {property.subletting_allowed ? 'Yes' : 'No'}
-                </li>
-              </ul>
-              <br>
-              </br>
-              <h2>Relationship with Landlord/Property Manager</h2>
-              <p>
-              Landlord/Property Manager was: {property.responsive_repairs} to repairs
-              </p>
-              <p>
-              Repairs were conducted by: {property.repairs}
-              </p>
-              <p>
-              Sufficient notice was: {property.sufficient_notice} provided by landlord/property manager before arriving at the property
-              </p>
-              <p>
-               Relationship with the landlord/property manager was rated: {property.rate_relationship}
-              </p>
-              <br>
-              </br>
-              <br>
-              </br>
-              <p>
-                This post was created by: {nickname.filter(name => name.auth0_id === property.user_id).map(name => name.nickname)
+            <Box key={property.id}>
+              <Heading as='h2' size='2xl' color='blue' mb={4}>Search results</Heading>
 
+              <Heading  as='h3' size='xl' color='teal' mb={4}>Rental Details:</Heading>
+              <Text fontSize='xl'>
+              Address:  {property.address}. <br/>
+              The tenant rented {property.rooms_1} out of {property.rooms_2} rooms in total. <br/>
+              Total rent paid per week ${property.rent_total}.<br/>
+              Were utilities included in the rent (e.g. water, power, internet)?  {property.utilities.charAt(0).toUpperCase() + property.utilities.slice(1)}. <br/>
+              The rental property was managed by:  {property.property_managed_by}. <br/>             
+              Annual frequency of rent increase: {property.rent_increase}. <br/>   
+              The average rent increase was ${property.ave_increase}.
+              </Text>
+              <br>
+              </br>
+              <Heading  as='h3' size='lg' color='blue' mb={4}>Amenities:</Heading>
+              <List fontSize='xl'>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+                Heat pump: {property.heat_pump ? 'Yes' : 'No'}
+                </ListItem>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+               Insulation:  {property.insulation ? 'Yes' : 'No'}
+                </ListItem>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+                Fridge:   {property.fridge ? 'Yes' : 'No'}
+                </ListItem>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+                Curtains in the bedroom: {property.curtains ? 'Yes' : 'No'}
+                </ListItem>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+                 Oven:  {property.oven ? 'Yes' : 'No'}
+                </ListItem>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+                Smoke alarm: {property.smoke_alarm ? 'Yes' : 'No'}
+                </ListItem>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+                 Fire extinguisher: {property.fire_extinguisher ? 'Yes' : 'No'}
+                </ListItem>
+              </List>
+              <Heading  as='h3' size='lg' color='blue' mb={4}mt={4}>Additional terms:</Heading>
+              <List fontSize='xl'>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+               Pets OK:  {property.pets_ok ? 'Yes' : 'No'}
+                </ListItem>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+                Smoking OK: {property.smoking_ok ? 'Yes' : 'No'}
+                </ListItem>
+                <ListItem>
+                <ListIcon as={HomeIcon} color='pink' />  
+                 Subletting OK: {property.subletting_allowed ? 'Yes' : 'No'}
+                </ListItem>
+              </List>
+              <br>
+              </br>
+              <Heading  as='h3' size='lg' color='blue' mb={4}mt={4}>Relationship with Landlord/Property Manager:</Heading>
+              <Text fontSize='xl'>
+              Landlord/Property Manager was {property.responsive_repairs.charAt(0).toLowerCase() + property.responsive_repairs.slice(1)} to repairs. <br/>
+             
+              Repairs were conducted by the {property.repairs}. <br/>
+          
+            
+              Sufficient notice was {property.sufficient_notice.charAt(0).toLowerCase() + property.sufficient_notice.slice(1)} provided by landlord/property manager before arriving at the property.<br/>
+            
+              
+               Relationship with the landlord/property manager was rated: {property.rate_relationship} <br/>
+              </Text>
+              <br/>
+              <Text fontSize='xl' as='em' mt={5} mb={5} color='blue'>
+                This post was created by: {nickname.filter(name => name.auth0_id === property.user_id).map(name => name.nickname)
                 }
-              </p>
-            </div>
+              </Text>
+            </Box>
           )}
 
-        </div>
+        </Box>
 
-        : <div>
-          <nav className=''>
-            <p>
-
-              <section className='sign'>
-              There are no properties that match the address you have searched for.
+        : <Box>
+          <Text>There are no properties that match the address you have searched for.
 If you are a previous tenant at this address, please
                 <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
                 /
                 <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
-              </section>
-            </p>
-          </nav>
-        </div>
+          </Text>
+        </Box>
       }
 
-    </section>
+    
+    </Box>
   )
 }
 

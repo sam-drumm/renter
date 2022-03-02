@@ -21,7 +21,7 @@ function DataResponsePage (props) {
   }, [])
 
   const [nickname, setNickname] = useState([])
-  const user = useSelector(state => state.user)
+  // const user = useSelector(state => state.user)
   useEffect(() => {
     getUsers()
       .then(res => {

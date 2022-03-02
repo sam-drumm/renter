@@ -25,7 +25,7 @@ function Nav () {
           console.error(err)
         })
     }
-  }, [user])
+  }, [])
 
   function handleLogin (event) {
     event.preventDefault()

@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
 import { getAddresses } from '../apis/addresses'
 import { useNavigate } from 'react-router-dom'
+import { setWaiting, clearWaiting } from '../actions/waiting'
 
 export default function SearchBar () {
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState('')
   const history = useNavigate()
+  const dispatch = useDispatch()
 
   const handleFilter = async (event) => {
     const searchWord = event.target.value
@@ -27,10 +30,12 @@ export default function SearchBar () {
   }
 
   function handleClick (value) {
+    dispatch(setWaiting())
     setFilteredData([])
     console.log(`selected address: ${value.address}`)
     console.log("now it's time to navigate to another page")
     history(`/reports/${value.address}`)
+    dispatch(clearWaiting())
   }
 
   return (

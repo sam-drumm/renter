@@ -2,11 +2,12 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 function Nav () {
   const user = useSelector(state => state.user)
+
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
@@ -28,28 +29,23 @@ function Nav () {
 
   return (
     <nav className='nav'>
+
       <Link to="/">
         <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
       </Link>
-      <section className='nav-item'>
-        <IfAuthenticated>
 
-          <p>Welcome {user.nickname}!</p>
+      <IfAuthenticated>
+        <p>Welcome {user.nickname}!</p>
 
-          <section className='sign'>
-            <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
-          </section>
+        <a href to='/rentalform' className='nav-link'>Add a Property</a>
+        <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
+      </IfAuthenticated>
 
-        </IfAuthenticated>
-        <IfNotAuthenticated>
+      <IfNotAuthenticated>
+        <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
+        <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
+      </IfNotAuthenticated>
 
-          <section className='sign'>
-            <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-            <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
-          </section>
-
-        </IfNotAuthenticated>
-      </section>
     </nav >
   )
 }

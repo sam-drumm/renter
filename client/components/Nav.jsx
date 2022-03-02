@@ -3,31 +3,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { Link } from 'react-router-dom'
-// import { getUsers } from '../apis/users'
 import { IoClose } from 'react-icons/io5'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
 function Nav () {
   const [open, setOpen] = useState(false)
-  // const user = useSelector(state => state.user)
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
-
-  // const [nickname, setNickname] = useState('')
-
-  // useEffect(() => {
-  //   if (user.auth0Id) {
-  //     getUsers()
-  //       .then(res => {
-  //         setNickname(res.nickname)
-  //         return null
-  //       })
-  //       .catch(err => {
-  //         console.error(err)
-  //       })
-  //   }
-  // }, [])
 
   function handleLogin (event) {
     event.preventDefault()

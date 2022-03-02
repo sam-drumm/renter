@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProperty } from '../actions/property'
 import { useNavigate } from 'react-router-dom'
+import { setWaiting, clearWaiting } from '../actions/waiting'
 
 function RentalForm () {
   const property = useSelector(state => state.property)
@@ -56,11 +57,13 @@ function RentalForm () {
 
   async function handleSubmit (event) {
     event.preventDefault()
+    dispatch(setWaiting())
     try {
       console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
       navigate('/')
-      window.alert('Thank you! Your Rental Form has been submitted.')
+      window.alert('Thank you! Your Renter form has been submitted.')
+      dispatch(clearWaiting())
       // we want to go to data response page with the report that was just made
     } catch (err) {
       console.error(err)
@@ -221,7 +224,7 @@ function RentalForm () {
               </label>
             </li>
           </ul>
-          <h2>Additional terms</h2>
+          <h3>Additional terms</h3>
           <ul>
             <li>
 
@@ -245,7 +248,7 @@ function RentalForm () {
           </ul>
         </fieldset>
         <fieldset>
-          <h2>Relationship with landlord/property manager</h2>
+          <h3>Relationship with landlord/property manager</h3>
           <label>
             <p></p>
             How responsive was the landlord/property manager to repairs?

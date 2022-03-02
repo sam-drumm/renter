@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
+import { setWaiting, clearWaiting } from '../actions/waiting'
 
 function Registration () {
   const user = useSelector(state => state.user)
   const history = useNavigate()
+  const dispatch = useDispatch()
 
   const [form, setForm] = useState({
     auth0Id: '',
@@ -32,16 +34,19 @@ function Registration () {
 
   async function handleClick (e) {
     e.preventDefault()
+    dispatch(setWaiting())
     // registerUser(form, authUser, history.push)
     try {
       await addUser(form)
       history('/rentalform')
+      dispatch(clearWaiting())
     } catch (error) {
       console.error(error)
     }
   }
 
   return (
+
     <section className='form'>
       <h2>Register Profile</h2>
       <form className='registration'>
@@ -51,7 +56,7 @@ function Registration () {
           value={form.auth0Id}
           onChange={handleChange}
           disabled={true}
-          // hidden={true}
+
         ></input>
         <label htmlFor='email' >Email</label>
         <input
@@ -75,7 +80,9 @@ function Registration () {
           Register
         </button>
       </form>
+      <p>Please note: your nickname is posted as the author of the Renter form.</p>
     </section>
+
   )
 }
 

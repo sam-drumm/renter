@@ -120,8 +120,8 @@ export default function Registration () {
               <Button
                 type='button'
                 onClick={handleClick}
-                bg={'blue.400'}
-                color={'white'}
+                bg={'teal'}
+                color={'black'}
                 _hover={{
                   bg: 'blue.500'
                 }}>

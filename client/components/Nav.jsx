@@ -37,6 +37,7 @@ function Nav () {
       </IfAuthenticated>
 
       <IfNotAuthenticated>
+        <a href='/' className='nav-link'>Home</a>
         <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
         <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
       </IfNotAuthenticated>

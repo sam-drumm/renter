@@ -28,36 +28,6 @@ table th {
   color: white;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  background-color: rgb(106, 158, 206);
-  color: white;
-  padding: 10px;
-  align-self: stretch;
-}
-
-.logo {
-  width: 50%;
-}
-
-.sign {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  text-align: right;
-  justify-content: right;
-  gap: 10px; 
-}
-
-a {
-  color: inherit;
-}
-
-.nav-item {
-  width: 50%;
-  text-align: right;
-}
 
 .app {
   display: flex;

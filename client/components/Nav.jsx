@@ -5,6 +5,7 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getUsers } from '../apis/users'
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Box } from '@chakra-ui/react'
 
 function Nav () {
   const user = useSelector(state => state.user)
@@ -43,31 +44,33 @@ function Nav () {
   }
 
   return (
-    <nav className='nav'>
-      <Link to="/">
-        <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
-      </Link>
-      <section className='nav-item'>
-        <IfAuthenticated>
-
-          { nickname &&
-          <p>Welcome {nickname}!</p>
+    <>
+    <Box>
+     <IfAuthenticated>
+   
+         { nickname &&
+          <Text>Welcome {nickname}!</Text>
           }
-          <section className='sign'>
-            <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
-          </section>
+      <Breadcrumb color='teal' fontSize='2xl' m={10}>
+      <BreadcrumbItem>
+        <BreadcrumbLink as={Link} to='/' onClick={handleLogoff}>Log out</BreadcrumbLink>
+      </BreadcrumbItem>
+      </Breadcrumb>
+    </IfAuthenticated>
+   
+    <IfNotAuthenticated>
+    <Breadcrumb color='teal' fontSize='2xl' m={10}>
+    <BreadcrumbItem>
+        <BreadcrumbLink as={Link} to='/' onClick={handleLogin}>Sign In</BreadcrumbLink>
+      </BreadcrumbItem>
 
-        </IfAuthenticated>
-        <IfNotAuthenticated>
-
-          <section className='sign'>
-            <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-            <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
-          </section>
-
-        </IfNotAuthenticated>
-      </section>
-    </nav >
+      <BreadcrumbItem>
+        <BreadcrumbLink as={Link} to='/' onClick={handleRegister}>Register</BreadcrumbLink>
+      </BreadcrumbItem>
+      </Breadcrumb>
+    </IfNotAuthenticated>
+    </Box>
+    </>
   )
 }
 

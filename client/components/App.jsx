@@ -23,7 +23,6 @@ function App () {
     <>
       <ChakraProvider theme={myNewTheme}>
         <Header />
-        <main className='container margin-container flex-container centre-flex'>
           <Routes>
             <Route path='/' element={
               <>
@@ -36,7 +35,6 @@ function App () {
             <Route path='/reports/:address' element={<DataResponsePage/>} />
             <Route path='/rentalform' element={<RentalForm/>} />
           </Routes>
-        </main>
       </ChakraProvider>
     </>
 

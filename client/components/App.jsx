@@ -8,40 +8,30 @@ import PingRoutes from './PingRoutes'
 import Registration from './Registration'
 import RentalForm from './RentalForm'
 import Users from './Users'
-// import { Button, Paper, Switch } from '@material-ui/core'
-// import { ThemeProvider, createTheme } from '@material-ui/core/styles'
-import DataResponseRedo from './DataResponseRedo'
-
+import { ChakraProvider } from '@chakra-ui/react'
+// import NavBar from './Nav/NavBar'
+// import DataResponseRedo from './DataResponseRedo'
 
 function App () {
   cacheUser(useAuth0)
 
-  // const [darkMode, setDarkMode] = useState(false)
-
-  // const theme = createTheme({
-  //   palette: {
-  //     type: darkMode ? 'dark' : 'light'
-  //   }
-  // })
-
   return (
 
     <>
-      <Header />
-      <main className='container margin-container flex-container centre-flex'>
-        <Routes>
-          <Route path='/' element={<SearchBar/>} placeholder='Start by typing the address of the rental property...' />
-          <Route path='/' element={<PingRoutes/>} />
-          <Route path='/users' element={<Users/>} />
-          <Route path='/register' element={<Registration/>} />
-          <Route path='/reports/:address' element={<DataResponseRedo/>} />
-          <Route path='/rentalform' element={<RentalForm/>} />
-        </Routes>
-      </main>
-
-      {/* <Paper/>
-      <ThemeProvider/> */}
-
+      <ChakraProvider>
+        <Header />
+        <main className='container margin-container flex-container centre-flex'>
+          <Routes>
+            <Route path='/' element={<SearchBar/>} placeholder='Start by typing the address of the rental property...' />
+            <Route path='/' element={<PingRoutes/>} />
+            {/* <Route path='/' element={<NavBar/>} /> */}
+            <Route path='/users' element={<Users/>} />
+            <Route path='/register' element={<Registration/>} />
+            {/* <Route path='/reports/:address' element={<DataResponseRedo/>} /> */}
+            <Route path='/rentalform' element={<RentalForm/>} />
+          </Routes>
+        </main>
+      </ChakraProvider>
     </>
 
   )

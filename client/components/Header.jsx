@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Nav from './Nav'
+import NavBar from './Nav/NavBar'
 import WaitIndicator from './WaitIndicator'
 
 export default function Header () {
@@ -8,7 +8,7 @@ export default function Header () {
     <header className='header'>
       <div className='flex-container container'>
         <WaitIndicator />
-        <Nav />
+        <NavBar />
       </div>
     </header>
   )

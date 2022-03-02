@@ -53,7 +53,6 @@ function Registration () {
           disabled={true}
           // hidden={true}
         ></input>
-
         <label htmlFor='email' >Email</label>
         <input
           name='email'

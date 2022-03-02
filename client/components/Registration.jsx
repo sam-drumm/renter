@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
 
 function Registration () {
   const user = useSelector(state => state.user)
-  const history = useHistory()
+  const history = useNavigate()
 
   const [form, setForm] = useState({
     auth0Id: '',
-    name: '',
     email: '',
-    description: ''
+    nickname: ''
   })
 
   useEffect(() => {
     setForm({
       auth0Id: user.auth0Id,
-      name: user.name,
-      email: user.email,
-      description: user.description
+      nickname: user.nickname,
+      email: user.email
+
     })
   }, [user])
 
@@ -36,7 +35,7 @@ function Registration () {
     // registerUser(form, authUser, history.push)
     try {
       await addUser(form)
-      history.push('/')
+      history('/rentalform')
     } catch (error) {
       console.error(error)
     }
@@ -52,17 +51,9 @@ function Registration () {
           value={form.auth0Id}
           onChange={handleChange}
           disabled={true}
+          // hidden={true}
         ></input>
-
-        <label htmlFor='name'>Name</label>
-        <input
-          name='name'
-          value={form.name}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
-
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email' >Email</label>
         <input
           name='email'
           value={form.email}
@@ -70,13 +61,13 @@ function Registration () {
           disabled={true}
         ></input>
 
-        <label htmlFor='description' >Description</label>
-        <textarea
-          name='description'
-          value={form.description}
+        <label htmlFor='nickname' >Nickname</label>
+        <input
+          name='nickname'
+          value={form.nickname}
           onChange={handleChange}
-          cols={3}
-        ></textarea>
+        ></input>
+
         <button
           type='button'
           onClick={handleClick}

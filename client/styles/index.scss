@@ -5,49 +5,51 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+// .table {
+//   font-family: Arial, Helvetica, sans-serif;
+//   border-collapse: collapse;
+//   width: 100%;
+// }
 
-table td, table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+// table td, table th {
+//   border: 1px solid #ddd;
+//   padding: 8px;
+// }
 
-table tr:nth-child(even){background-color: #f2f2f2;}
+// table tr:nth-child(even){background-color: #f2f2f2;}
 
-table tr:hover {background-color: #ddd;}
+// table tr:hover {background-color: #ddd;}
 
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #9c9c9c;
-  color: white;
-}
+// table th {
+//   padding-top: 12px;
+//   padding-bottom: 12px;
+//   text-align: left;
+//   background-color: #9c9c9c;
+//   color: white;
+// }
 
 nav {
   display: flex;
   align-items: center;
-  background-color: black;
+  background-color: #D1D2F9;
   color: white;
   padding: 10px;
   align-self: stretch;
 }
 
 .logo {
-  width: 50%;
+  width: 15%;
 }
 
 .sign {
   display: flex;
   flex-direction: row;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
   text-align: right;
   justify-content: right;
-  gap: 10px; 
+  gap: 70px;
+  color: #03989E;
 }
 
 a {
@@ -55,7 +57,7 @@ a {
 }
 
 .nav-item {
-  width: 50%;
+  width: 90%;
   text-align: right;
 }
 
@@ -105,3 +107,169 @@ a {
   flex-direction: column;
   align-items: center;
 }
+
+/* ----------------rental form styling------------------------ */
+
+
+.form-box{
+  min-width: 100%;
+  height: 130vh;
+  border: black;
+  margin: 0vw;
+  padding: 5vw ;
+  position:relative;
+  /* position:relative for .prevBtn and .nextBtn position:absolute; */
+}
+
+.form-box h1{
+  font-size: 35px ;
+  font-weight: bold;
+  text-align: center;
+  color: #F92A82;
+  margin: 10 5 2vh 2;
+}
+
+.form-box h2 {
+  text-align: left center;
+  font-size: 25px ;
+  font-weight: bold;
+  color: #F92A82;
+  padding: 1em;
+
+}
+
+.form-box h4{
+  font-size: 20px ;
+  text-align: center;
+  color: lightgrey;
+  margin: 0 0 .5vh 0;
+}
+
+.form-box fieldset {
+  margin: 0 0 .5vh 0;
+  padding: 1vw ;
+}
+
+.form-box label{
+  font-size: 20px;
+  margin: 1.1vw 0 ;
+}
+
+.form-box input, text{
+  display: block;
+  width: 100%;
+  padding: .5rem .8rem .5rem .8rem;
+  margin: .9vw 0 ;
+  border: 0.5em;
+  border-radius: 5px;
+  font-size: 20px;
+  border: 1px solid black;
+
+}
+
+.form-box select{
+  width: 17%;
+  padding: 4px 18px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+
+.form-box search-bar {
+  margin-top: 350px;
+  margin-right: 80px;
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: lightgrey;
+  padding: .5rem 4rem .5rem 4rem;
+  margin: 5vw 0 ;
+  border: 0.5em;
+  border-radius: 5px;
+}
+
+.disclaimer {
+  font-size: 13px;
+  text-align: center;
+  font-style: italic;
+}
+/*-------styling added by Ningyi----------*/
+
+.search {
+  margin-top: 350px;
+  margin-right: 80px;
+}
+
+.searchInputs {
+  margin: top;
+  display: flex;
+  border: 1px solid #CBD5E0;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.search input {
+  background: none;
+  border: none;
+  font-size: 24px;
+  margin-top: 10px;
+  padding: 15px;
+  height: 30px;
+  width: 854px;
+}
+
+.searchIcon {
+  height: 60px;
+  width: 50px;
+  background-color: none;
+  padding-right: 15px;
+  color: #148FE8;
+  display: grid;
+  place-items: center;
+}
+
+input:focus {
+  outline: none
+}
+
+.searchIcon svg {
+  font-size: 35px;
+}
+
+.dataResult {
+  margin: top 5px;
+  width: 854px;
+  height: 200px;
+  background-color: white;
+  box-shadow: grey;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.dataResult .dataItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.dataItem p {
+  margin-left: 10px;
+  font-size: 24px;
+}
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: lightgrey;
+}
+
+#clearBtn {
+  cursor: pointer;
+}
+
+

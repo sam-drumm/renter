@@ -4,6 +4,8 @@ import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Box, Text } from '@chakra-ui/react'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 
 function Nav () {
   const user = useSelector(state => state.user)
@@ -28,25 +30,32 @@ function Nav () {
   }
 
   return (
-    <nav className='nav'>
-
-      <Link to="/">
-        <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
-      </Link>
-
-      <IfAuthenticated>
-        <p>Welcome {user.nickname}!</p>
-
-        <a href to='/rentalform' className='nav-link'>Add a Property</a>
-        <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
+    <>
+    <Box>
+        <IfAuthenticated>
+        <Text>Welcome {user.nickname}!</Text>
+        <Breadcrumb color='teal' fontSize='2xl' m={10} display='flex' justifyContent='flex-end'separator={<ChevronRightIcon color='pink' />}>
+        <BreadcrumbItem>
+        <BreadcrumbLink as={Link} to='/rentalform'>Add a Property</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+        <BreadcrumbLink as={Link} to='/' onClick={handleLogoff}>Log out</BreadcrumbLink>
+        </BreadcrumbItem>
+        </Breadcrumb>
       </IfAuthenticated>
 
       <IfNotAuthenticated>
-        <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-        <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
+      <Breadcrumb color='teal' fontSize='2xl' m={10} display='flex' justifyContent='flex-end' separator={<ChevronRightIcon color='pink' />}>
+      <BreadcrumbItem> 
+        <BreadcrumbLink as={Link} to='/' onClick={handleLogin}>Sign In</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+       <BreadcrumbLink as={Link} to='/' onClick={handleRegister}>Register</BreadcrumbLink>
+       </BreadcrumbItem>
+        </Breadcrumb>
       </IfNotAuthenticated>
-
-    </nav >
+      </Box>
+      </>
   )
 }
 

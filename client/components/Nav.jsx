@@ -2,7 +2,6 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function Nav () {
@@ -30,14 +29,10 @@ function Nav () {
   return (
     <nav className='nav'>
 
-      <Link to="/">
-        <img src='./images/renterlogo.png' alt="renterlogo" className='logo' />
-      </Link>
-
       <IfAuthenticated>
         <p>Welcome {user.nickname}!</p>
-
-        <a href to='/rentalform' className='nav-link'>Add a Property</a>
+        <a href='/' className='nav-link'>Home</a>
+        <a href='/rentalform' className='nav-link'>Renter form</a>
         <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
       </IfAuthenticated>
 

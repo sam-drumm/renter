@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
 import { setWaiting, clearWaiting } from '../actions/waiting'
 
-
 function Registration () {
   const user = useSelector(state => state.user)
   const history = useNavigate()
@@ -56,7 +55,7 @@ function Registration () {
           value={form.auth0Id}
           onChange={handleChange}
           disabled={true}
-          // hidden={true}
+
         ></input>
 
         <label htmlFor='email' >Email</label>
@@ -81,6 +80,7 @@ function Registration () {
           Register
         </button>
       </form>
+      <p>Please note: your nickname is posted as the author of the Renter form.</p>
     </section>
   )
 }

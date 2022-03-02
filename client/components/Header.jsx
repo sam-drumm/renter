@@ -5,10 +5,10 @@ import Nav from './Nav'
 export default function Header () {
   return (
     <>
-    <Link to="/">
-    <img src='./images/RenterFinal-removebg-preview.png' alt="renterlogo" className='logo'/>
-    </Link>
-    <Nav />
+      <Link to="/">
+        <img src='./images/RenterFinal-removebg-preview.png' alt="renterlogo" className='logo'/>
+      </Link>
+      <Nav />
     </>
   )
 }

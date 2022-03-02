@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Box, Text } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
-
 function Nav () {
   const user = useSelector(state => state.user)
 

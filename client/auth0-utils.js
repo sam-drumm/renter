@@ -21,8 +21,7 @@ export async function cacheUser (useAuth0) {
       const token = await getAccessTokenSilently()
       const existingUser = await getUser(user.sub, token)
       if (existingUser) {
-        const { id, nickname } = existingUser
-        saveUser({ id, auth0Id: user.sub, nickname, email: user.name, token })
+        saveUser({ id: existingUser[0].id, auth0Id: user.sub, nickname: existingUser[0].nickname, email: user.name, token })
       } else {
         saveUser({ auth0Id: user.sub, email: user.name, token })
       }

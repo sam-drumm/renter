@@ -5,7 +5,6 @@ export default function Logo (props) {
   return (
     <Box {...props}>
       <img src='./images/NewRenterLogo.png' alt="renterlogo" className='logo' />
-        Logo
     </Box>
   )
 }

@@ -44,9 +44,9 @@ function Nav () {
 
   return (
     <nav className='Nav'>
-      <Link to="/">
+      {/* <Link to="/">
         <img src='./images/NewRenterLogo.png' alt="renterlogo" className='logo' />
-      </Link>
+      </Link> */}
       <section className='nav-item'>
         <IfAuthenticated>
 

@@ -28,38 +28,6 @@ body {
 //   color: white;
 // }
 
-nav {
-  display: flex;
-  align-items: center;
-  background-color: #D1D2F9;
-  color: white;
-  padding: 10px;
-  align-self: stretch;
-}
-
-.logo {
-  width: 15%;
-}
-
-.sign {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  text-align: right;
-  justify-content: right;
-  gap: 70px;
-  color: #03989E;
-}
-
-a {
-  color: inherit;
-}
-
-.nav-item {
-  width: 90%;
-  text-align: right;
-}
 
 .app {
   display: flex;
@@ -270,6 +238,16 @@ a:hover {
 
 #clearBtn {
   cursor: pointer;
+}
+
+/*----------------logo (Vanilla CSS)--------------------*/
+
+.logo {
+  position: absolute;
+  width: 160px;
+  height: 156px;
+  left: 39px;
+  top: 0px;
 }
 
 

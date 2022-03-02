@@ -1,15 +1,14 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 import Nav from './Nav'
-import WaitIndicator from './WaitIndicator'
 
 export default function Header () {
   return (
-    <header>
-      <div className='flex-container container'>
-        <WaitIndicator />
-        <Nav />
-      </div>
-    </header>
+    <>
+    <Link to="/">
+    <img src='./images/RenterFinal-removebg-preview.png' alt="renterlogo" className='logo'/>
+    </Link>
+    <Nav />
+    </>
   )
 }

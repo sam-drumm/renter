@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
 import { setWaiting, clearWaiting } from '../actions/waiting'
-import WaitIndicator from './WaitIndicator'
 
 import {
   Flex,

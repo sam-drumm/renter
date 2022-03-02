@@ -6,7 +6,7 @@ export default function Header () {
   return (
     <>
       <Link to="/">
-        <img src='./images/RenterFinal-removebg-preview.png' alt="renterlogo" className='logo'/>
+        <img src='./images/RenterFinal-bgRemoved.png' alt="renterlogo" className='logo'/>
       </Link>
       <Nav />
     </>

@@ -43,6 +43,21 @@ function PingRoutes () {
 
   return (
     <section className='ping'>
+      <section className='buttons' >
+        <div>
+          Ping 👉
+        </div>
+        <div>
+          <button onClick={handlePublicEndpoint}>Public</button>
+        </div>
+        <div>
+          <button onClick={handleProtectedEndpoint}>Protected</button>
+        </div>
+        <div>
+          <button onClick={handlePrivateEndpoint}>Private (permissioned)</button>
+        </div>
+      </section>
+      <p className='message'>{message}</p>
     </section>
   )
 }

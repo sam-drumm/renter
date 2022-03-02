@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getUsers } from '../apis/users'
 
 function Nav () {
   const user = useSelector(state => state.user)
@@ -35,9 +34,8 @@ function Nav () {
       <section className='nav-item'>
         <IfAuthenticated>
 
-          { user.nickname &&
           <p>Welcome {user.nickname}!</p>
-          }
+
           <section className='sign'>
             <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
           </section>

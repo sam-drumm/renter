@@ -15,9 +15,7 @@ function DataResponsePage (props) {
 
   const properties = useSelector(state => state.properties)
   useEffect(() => {
-    console.log(address)
     dispatch(fetchProperties(address))
-    console.log('properties', properties)// pass in the input address
   }, [])
 
   const [nickname, setNickname] = useState([])

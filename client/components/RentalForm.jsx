@@ -59,7 +59,6 @@ function RentalForm () {
     event.preventDefault()
     dispatch(setWaiting())
     try {
-      console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
       navigate('/')
       window.alert('Thank you! Your Renter form has been submitted.')

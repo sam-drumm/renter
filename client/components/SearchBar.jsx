@@ -32,8 +32,6 @@ export default function SearchBar () {
   function handleClick (value) {
     dispatch(setWaiting())
     setFilteredData([])
-    console.log(`selected address: ${value.address}`)
-    console.log("now it's time to navigate to another page")
     history(`/reports/${value.address}`)
     dispatch(clearWaiting())
   }

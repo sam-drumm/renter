@@ -32,7 +32,6 @@ export function clearUsers () {
 }
 
 export function fetchUsers (auth0Id, token) {
-  console.log(auth0Id)
   return dispatch => {
     return getUsers(auth0Id, token)
       .then(users => {

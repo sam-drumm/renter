@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProperty } from '../actions/property'
 import { useNavigate } from 'react-router-dom'
+import { setWaiting, clearWaiting } from '../actions/waiting'
 
 function RentalForm () {
   const property = useSelector(state => state.property)
@@ -56,11 +57,13 @@ function RentalForm () {
 
   async function handleSubmit (event) {
     event.preventDefault()
+    dispatch(setWaiting())
     try {
       console.log('This is your form for dispatch', form)
       dispatch(addProperty(form, token))
       navigate('/')
       window.alert('Thank you! Your Rental Form has been submitted.')
+      dispatch(clearWaiting())
       // we want to go to data response page with the report that was just made
     } catch (err) {
       console.error(err)

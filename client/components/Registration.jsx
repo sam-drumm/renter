@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
+import { setWaiting, clearWaiting } from '../actions/waiting'
+
 
 function Registration () {
   const user = useSelector(state => state.user)
   const history = useNavigate()
+  const dispatch = useDispatch()
 
   const [form, setForm] = useState({
     auth0Id: '',
@@ -32,10 +35,12 @@ function Registration () {
 
   async function handleClick (e) {
     e.preventDefault()
+    dispatch(setWaiting())
     // registerUser(form, authUser, history.push)
     try {
       await addUser(form)
       history('/rentalform')
+      dispatch(clearWaiting())
     } catch (error) {
       console.error(error)
     }

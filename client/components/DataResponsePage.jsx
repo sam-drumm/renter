@@ -8,8 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import {
   Box, Text, Heading, List,
   ListItem,
-  ListIcon,
-  UnorderedList
+  ListIcon
 } from '@chakra-ui/react'
 import HomeIcon from '@mui/icons-material/Home'
 
@@ -54,8 +53,8 @@ function DataResponsePage (props) {
       {properties.length > 0
         ? <Box> {console.log(properties)}
           {properties.map(property =>
-            <Box key={property.id}>
-              <Heading as='h2' size='2xl' color='blue' mb={4}>Search results</Heading>
+            <Box key={property.id} mt={30}>
+              <Heading as='h2' size='2xl' color='blue' mb={4} mt={30} >Search results</Heading>
 
               <Heading as='h3' size='xl' color='teal' mb={4}>Rental Details:</Heading>
               <Text fontSize='xl'>

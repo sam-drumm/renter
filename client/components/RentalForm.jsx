@@ -4,6 +4,7 @@ import { addProperty } from '../actions/property'
 import { useNavigate } from 'react-router-dom'
 import { setWaiting, clearWaiting } from '../actions/waiting'
 import AlertMessage from './AlertMessage'
+import Footer from './Footer'
 
 function RentalForm () {
   const property = useSelector(state => state.property)
@@ -312,8 +313,9 @@ function RentalForm () {
         <p>Length of tenancy is for internal use only to verify that the data remains up to date and within the last 5 years</p>
       </div>
 
+      <Footer/>
     </div>
-
+    
   )
 }
 

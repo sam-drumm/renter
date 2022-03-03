@@ -11,6 +11,7 @@ import {
   ListIcon
 } from '@chakra-ui/react'
 import HomeIcon from '@mui/icons-material/Home'
+import Footer from './Footer'
 
 function DataResponsePage (props) {
   const { address } = useParams()
@@ -132,6 +133,7 @@ function DataResponsePage (props) {
                 }
               </Text>
             </Box>
+            
           )}
 
         </Box>
@@ -145,7 +147,7 @@ If you are a previous tenant at this address, please
           </Text>
         </Box>
       }
-
+    <Footer/>
     </Box>
   )
 }

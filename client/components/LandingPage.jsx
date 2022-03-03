@@ -11,7 +11,7 @@ export default function LandingPage () {
         templateColumns='1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr'
         gap={4}>
         <GridItem colSpan={4} m={10}>
-          <Heading as='h1' size='4xl' isTruncated ml={10} mt={20} py={5}>Renter</Heading>
+          <Heading as='h1' size='4xl' isTruncated ml={10} mt={10} py={5}>Renter</Heading>
           <Text fontSize='4xl' color='pink' ml={10} py={2}>Live Better.</Text>
           <Text fontSize='2xl' color='blue' ml={10} pr={20}>Learn about your next rental before making a commitment. Find out what you need to know by searching the Renter database.</Text>
         </GridItem>

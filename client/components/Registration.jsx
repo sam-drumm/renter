@@ -26,16 +26,17 @@ export default function Registration () {
 
   const [form, setForm] = useState({
     auth0Id: '',
+    name: '',
     email: '',
-    nickname: ''
+    description: ''
   })
 
   useEffect(() => {
     setForm({
       auth0Id: user.auth0Id,
-      nickname: user.nickname,
-      email: user.email
-
+      name: user.name,
+      email: user.email,
+      description: user.description
     })
   }, [user])
 

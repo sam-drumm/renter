@@ -33,7 +33,7 @@ export function clearUsers () {
 
 export function fetchUsers (auth0Id, token) {
   return dispatch => {
-    return getUsers(auth0Id, token)
+    return getUsers()
       .then(users => {
         dispatch(setUsers(users))
         return null

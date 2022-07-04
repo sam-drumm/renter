@@ -58,8 +58,8 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params
 
   try {
-    const roles = await getUserRoles(id)
-    res.json({ roles })
+    const user = await db.getUser(auth0Id)
+    res.json(user[0])
   } catch (error) {
     console.error(error)
     res.status(500).json({ message: 'Unable to retrieve user roles' })

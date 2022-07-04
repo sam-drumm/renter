@@ -31,7 +31,7 @@ export function clearUsers () {
   }
 }
 
-export function fetchUsers () {
+export function fetchUsers (auth0Id, token) {
   return dispatch => {
     return getUsers()
       .then(users => {

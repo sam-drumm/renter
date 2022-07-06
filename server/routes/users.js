@@ -1,6 +1,6 @@
 const express = require('express')
 const jwtAuthz = require('express-jwt-authz')
-const { getUserRoles, checkJwt } = require('../auth0')
+const { checkJwt } = require('../auth0')
 
 const db = require('../db/users')
 const router = express.Router()
@@ -58,7 +58,7 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params
 
   try {
-    const user = await db.getUser(auth0Id)
+    const user = await db.getUser(id)
     res.json(user[0])
   } catch (error) {
     console.error(error)

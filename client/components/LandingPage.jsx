@@ -16,7 +16,8 @@ export default function LandingPage () {
           <Text fontSize='2xl' color='blue' ml={10} pr={20}>Learn about your next rental before making a commitment. Find out what you need to know by searching the Renter database.</Text>
         </GridItem>
         <GridItem colSpan={5}>
-          <SearchBar placeholder='Start by typing the address of the rental property...' />
+          <SearchBar/>
+          {/* <SearchBar placeholder='Start by typing the address of the rental property...' /> */}
         </GridItem>
 
         <GridItem colSpan={3} ml={20} mr={15} bg='lavender' borderRadius='15'>

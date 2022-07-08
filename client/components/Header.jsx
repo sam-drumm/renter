@@ -5,7 +5,9 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, Image, BreadcrumbItem, BreadcrumbLink, useDisclosure, Text, Flex, Box, Stack } from '@chakra-ui/react'
-import { BiChevronRight, BiCollapse } from 'react-icons/bi'
+import { BiChevronRight } from 'react-icons/bi'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { FcCollapse, FcMenu } from 'react-icons/fc'
 import { DarkMode } from './DarkMode'
 
 // import { ChevronRightIcon } from '@chakra-ui/icons'
@@ -50,8 +52,6 @@ function Nav () {
       > */}
 
       <Flex
-        border='2px'
-        mb={5}
         position={'sticky'}
       >
         <Image src='./images/RenterFinal-bgRemoved.png' alt="renterlogo" boxSize='150px'/>
@@ -59,15 +59,14 @@ function Nav () {
         <Stack
           display={{ base: isOpen ? 'block' : 'none', md: 'flex' }}
           flexGrow={1}
-          direction={{ base: 'column', md: 'row' }}
+          direction={{ base: 'column-reverse', md: 'row-reverse' }}
           width={{ base: 'full', md: 'auto' }}
         >
 
           <IfAuthenticated>
-            <Text
-              fontSize='2xl' color='pink' display='flex' mx={10} right={'50px'}>Welcome {user.nickname}!</Text>
-            <Breadcrumb color='teal' fontSize='2xl' display='flex'
-              separator={<BiChevronRight color='pink' />}
+            <Text fontSize='2xl' color='pink' display='flex' mx={10}>Welcome {user.nickname}!</Text>
+
+            <Breadcrumb color='teal' fontSize='2xl' separator={<BiChevronRight color='pink' />}
             >
               <BreadcrumbItem>
                 <BreadcrumbLink as={Link} to='/'>Home</BreadcrumbLink>
@@ -80,10 +79,9 @@ function Nav () {
               </BreadcrumbItem>
             </Breadcrumb>
           </IfAuthenticated>
+
           <IfNotAuthenticated>
-            <Breadcrumb color='teal' fontSize='2xl' m={10} display='flex'
-              separator={<BiChevronRight color='pink' />}
-            >
+            <Breadcrumb color='teal' fontSize='2xl' m={10} separator={<BiChevronRight color='pink' />}>
               <BreadcrumbItem>
                 <BreadcrumbLink as={Link} to='/' onClick={handleLogin}>Sign In</BreadcrumbLink>
               </BreadcrumbItem>
@@ -95,8 +93,17 @@ function Nav () {
 
         </Stack>
 
-        <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
-          <BiCollapse/>
+        <Box
+          display={{ base: 'block', md: 'none' }}
+          onClick={handleToggle}
+
+        >
+          {isOpen
+            ? <FcCollapse
+              size={'2em'}
+            />
+            : <FcMenu size={'2em'}/>
+          }
         </Box>
       </Flex>
 

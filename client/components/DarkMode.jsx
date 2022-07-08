@@ -11,7 +11,7 @@ const config = {
 // 3. extend the theme
 const theme = extendTheme({ config })
 
-export function Example () {
+export function DarkMode () {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Box >

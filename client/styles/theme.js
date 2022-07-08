@@ -1,6 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
 
-const myNewTheme = extendTheme({
+const renterTheme = extendTheme({
   colors: {
     transparent: 'transparent',
     black: '#000',
@@ -16,7 +16,14 @@ const myNewTheme = extendTheme({
       900: '#171923'
     }
     // ...
+  },
+  breakpoints: {
+    sm: '30em',
+    md: '48em',
+    lg: '62em',
+    xl: '80em'
   }
+
 })
 
-export default myNewTheme
+export default renterTheme

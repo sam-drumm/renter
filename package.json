@@ -54,7 +54,7 @@
     "jwks-rsa": "^2.0.4",
     "knex": "^0.95.11",
     "pg": "^8.7.1",
-    "react-icons": "^4.3.1",
+    "react-icons": "^4.4.0",
     "superagent": "^6.1.0"
   },
   "devDependencies": {

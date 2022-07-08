@@ -6,12 +6,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, Image, BreadcrumbItem, BreadcrumbLink, useDisclosure, Text, Flex, Box, Stack } from '@chakra-ui/react'
 import { BiChevronRight } from 'react-icons/bi'
-import { GiHamburgerMenu } from 'react-icons/gi'
 import { FcCollapse, FcMenu } from 'react-icons/fc'
-import { DarkMode } from './DarkMode'
-
-// import { ChevronRightIcon } from '@chakra-ui/icons'
-// import { ChevronRight } from '@mui/icons-material'
 
 function Nav () {
   const user = useSelector(state => state.user)
@@ -36,78 +31,63 @@ function Nav () {
     register()
   }
   return (
-    <>
-      {/* <Flex
-        flex='auto'
-        position="sticky"
-        width="100%"
-        as="header"
-        align="center"
-        justify="space-between"
-        wrap="wrap"
-        padding={6}
-        bg="blue.400"
-        color="white"
-        zIndex={2}
-      > */}
 
-      <Flex
-        position={'sticky'}
+    <Flex
+      position={'sticky'}
+    >
+      <Image src='./images/RenterFinal-bgRemoved.png' alt="renterlogo" boxSize='150px'/>
+
+      <Stack
+        display={{ base: isOpen ? 'block' : 'none', md: 'flex' }}
+        flexGrow={1}
+        direction={{ base: 'column-reverse', md: 'row-reverse' }}
+        width={{ base: 'full', md: 'auto' }}
       >
-        <Image src='./images/RenterFinal-bgRemoved.png' alt="renterlogo" boxSize='150px'/>
 
-        <Stack
-          display={{ base: isOpen ? 'block' : 'none', md: 'flex' }}
-          flexGrow={1}
-          direction={{ base: 'column-reverse', md: 'row-reverse' }}
-          width={{ base: 'full', md: 'auto' }}
-        >
+        <IfAuthenticated>
+          <Text fontSize='2xl' color='pink' display='flex' mx={10}>Welcome {user.nickname}!</Text>
 
-          <IfAuthenticated>
-            <Text fontSize='2xl' color='pink' display='flex' mx={10}>Welcome {user.nickname}!</Text>
+          <Breadcrumb color='teal' fontSize='2xl' separator={<BiChevronRight color='pink' />}
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to='/'>Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to='/rentalform'>Renter Form</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to='/' onClick={handleLogoff}>Log out</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </IfAuthenticated>
 
-            <Breadcrumb color='teal' fontSize='2xl' separator={<BiChevronRight color='pink' />}
-            >
-              <BreadcrumbItem>
-                <BreadcrumbLink as={Link} to='/'>Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbItem>
-                <BreadcrumbLink as={Link} to='/rentalform'>Renter Form</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbItem>
-                <BreadcrumbLink as={Link} to='/' onClick={handleLogoff}>Log out</BreadcrumbLink>
-              </BreadcrumbItem>
-            </Breadcrumb>
-          </IfAuthenticated>
+        <IfNotAuthenticated>
+          <Breadcrumb color='teal' fontSize='2xl' m={10} separator={<BiChevronRight color='pink' />}>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to='/' onClick={handleLogin}>Sign In</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to='/' onClick={handleRegister}>Register</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </IfNotAuthenticated>
 
-          <IfNotAuthenticated>
-            <Breadcrumb color='teal' fontSize='2xl' m={10} separator={<BiChevronRight color='pink' />}>
-              <BreadcrumbItem>
-                <BreadcrumbLink as={Link} to='/' onClick={handleLogin}>Sign In</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbItem>
-                <BreadcrumbLink as={Link} to='/' onClick={handleRegister}>Register</BreadcrumbLink>
-              </BreadcrumbItem>
-            </Breadcrumb>
-          </IfNotAuthenticated>
+      </Stack>
 
-        </Stack>
+      <Box
+        display={{ base: 'block', md: 'none' }}
+        onClick={handleToggle}
 
-        <Box
-          display={{ base: 'block', md: 'none' }}
-          onClick={handleToggle}
+      >
+        {isOpen
+          ? <FcCollapse
+            size={'2em'}
+          />
+          : <FcMenu size={'2em'}/>
+        }
+      </Box>
+    </Flex>
 
-        >
-          {isOpen
-            ? <FcCollapse
-              size={'2em'}
-            />
-            : <FcMenu size={'2em'}/>
-          }
-        </Box>
-      </Flex>
-
-    </>
   )
 }
 

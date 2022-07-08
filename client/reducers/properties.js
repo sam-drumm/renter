@@ -2,7 +2,7 @@ import { CLEAR_PROPERTIES, SET_PROPERTIES } from '../actions/property'
 
 const initialState = []
 
-const reducer = (state = initialState, action) => {
+const properites = (state = initialState, action) => {
   switch (action.type) {
     case SET_PROPERTIES:
       return action.properties
@@ -13,4 +13,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+export default properites

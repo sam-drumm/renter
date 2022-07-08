@@ -2,7 +2,7 @@ import { CLEAR_USERS, SET_USERS } from '../actions/user'
 
 const initialState = []
 
-const reducer = (state = initialState, action) => {
+const users = (state = initialState, action) => {
   switch (action.type) {
     case SET_USERS:
       return action.users
@@ -13,4 +13,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+export default users

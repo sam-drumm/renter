@@ -5,6 +5,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { getAddresses } from '../apis/addresses'
 import { useNavigate } from 'react-router-dom'
 import { setWaiting, clearWaiting } from '../actions/waiting'
+import { InputGroup, Input, InputRightElement } from '@chakra-ui/react'
 
 export default function SearchBar () {
   const [filteredData, setFilteredData] = useState([])
@@ -14,7 +15,6 @@ export default function SearchBar () {
 
   const handleFilter = async (event) => {
     const searchWord = event.target.value
-    // address typed in by the user in search bar
     setWordEntered(searchWord)
     if (searchWord === '') {
       setFilteredData([])
@@ -37,37 +37,27 @@ export default function SearchBar () {
   }
 
   return (
-    <div className='search'>
-      <div className='searchInputs'>
-        <input
-          type='text'
-          placeholder='Start by typing the address of the rental property...'
-          value={wordEntered}
-          onChange={handleFilter}
-        />
-        <div className='searchIcon'>
-          {filteredData.length === 0
-            ? (<SearchIcon />)
-            : (<CloseIcon id="clearBtn" onClick={clearInput} />)
-          }
-        </div>
-      </div>
-      {filteredData.length !== 0 && (
-        <div className='dataResult'>
-          {filteredData.slice(0, 5).map(value =>
-            <a
-              className='dataItem'
-              href="#"
-              key={value.id}
-              onClick={() => handleClick(value)}
-            >
-              <p>{value.address}</p>
-            </a>
+    <InputGroup>
 
-            // used slice so that when the api fetches addresses, it will show the first 5 matches
-          )}
-        </div>
-      )}
-    </div>
+      <Input
+        type='text'
+        placeholder='Start by typing the address of the rental property...'
+        value={wordEntered}
+        onChange={handleFilter}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            handleClick()
+          }
+        }}
+      />
+      <InputRightElement>
+        {filteredData.length === 0
+          ? (<SearchIcon />)
+          : (<CloseIcon onClick={clearInput} />)
+        }
+      </InputRightElement>
+
+    </InputGroup>
+
   )
 }

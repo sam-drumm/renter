@@ -176,8 +176,10 @@ table th {
 /*-------styling added by Ningyi----------*/
 
 .search {
-  margin-top: 350px;
-  margin-right: 80px;
+  // margin-top: 350px;
+  // margin-right: 800px;
+  // max-width: 700px;
+  // border-width: 5px
 }
 
 .searchInputs {
@@ -253,7 +255,7 @@ a:hover {
 /*----------------logo (Vanilla CSS)--------------------*/
 
 .logo {
-  position: absolute;
+  position: fixed;
   width: 160px;
   height: 156px;
   left: 39px;

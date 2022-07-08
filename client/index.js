@@ -8,21 +8,27 @@ import config from './auth_config.json'
 
 import App from './components/App'
 import { Auth0Provider } from '@auth0/auth0-react'
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
+import renterTheme from './styles/theme'
+import theme from './components/DarkMode'
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
-    <Auth0Provider
-      domain={config.domain}
-      clientId={config.clientId}
-      redirectUri={window.location.origin}
-      audience={config.audience}
-    >
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>
-    </Auth0Provider>,
+    <Router>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <Auth0Provider
+        domain={config.domain}
+        clientId={config.clientId}
+        redirectUri={window.location.origin}
+        audience={config.audience}
+      >
+        <Provider store={store}>
+          <ChakraProvider theme={renterTheme}>
+            <App />
+          </ChakraProvider>
+        </Provider>
+      </Auth0Provider>
+    </Router>,
     document.getElementById('app')
   )
 })

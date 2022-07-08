@@ -11,10 +11,10 @@ const config = {
 // 3. extend the theme
 const theme = extendTheme({ config })
 
-export function Example () {
+export function DarkMode () {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <Box pos="absolute" top="150" left="1750">
+    <Box >
       <Button onClick={toggleColorMode}>
         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
       </Button>

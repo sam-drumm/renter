@@ -10,7 +10,7 @@ import { InputGroup, Input, InputRightElement } from '@chakra-ui/react'
 export default function SearchBar () {
   const [filteredData, setFilteredData] = useState([])
   const [wordEntered, setWordEntered] = useState('')
-  const history = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleFilter = async (event) => {
@@ -32,7 +32,7 @@ export default function SearchBar () {
   function handleClick (value) {
     dispatch(setWaiting())
     setFilteredData([])
-    history(`/reports/${value.address}`)
+    navigate(`/reports/${value.address}`)
     dispatch(clearWaiting())
   }
 

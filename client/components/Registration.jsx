@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addUser } from '../apis/users'
@@ -10,7 +10,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
   Link,
   Button,
@@ -20,44 +19,24 @@ import {
 } from '@chakra-ui/react'
 
 export default function Registration () {
-  const user = useSelector(state => state.user)
-  const history = useNavigate()
+  const { auth0Id, email } = useSelector(state => state.user)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const [form, setForm] = useState({
-    auth0Id: '',
-    name: '',
-    email: '',
-    description: ''
-  })
+  const [nickname, setNickname] = useState('')
 
-  useEffect(() => {
-    setForm({
-      auth0Id: user.auth0Id,
-      name: user.name,
-      email: user.email,
-      description: user.description
-    })
-  }, [user])
-
-  function handleChange (e) {
-    const { name, value } = e.target
-    setForm({
-      ...form,
-      [name]: value
-    })
+  const form = ({
+    nickname,
+    auth0Id,
+    email
   }
+  )
 
   async function handleClick (e) {
     e.preventDefault()
-    dispatch(setWaiting())
-    // registerUser(form, authUser, history.push)
     try {
-      await setTimeout(() => {
-        addUser(form)
-        history('/rentalform')
-        dispatch(clearWaiting())
-      }, 500)
+      await addUser(form)
+      navigate('/')
     } catch (error) {
       console.error(error)
     }
@@ -87,8 +66,7 @@ export default function Registration () {
               <FormLabel>Auth0Id</FormLabel>
               <Input type="auth0Id"
                 name='auth0Id'
-                value={form.auth0Id}
-                onChange={handleChange}
+                value={auth0Id}
                 disabled={true}
               />
             </FormControl>
@@ -97,9 +75,8 @@ export default function Registration () {
               <FormLabel>Email </FormLabel>
               <Input type="email"
                 name='email'
-                value={form.email}
-                onChange={handleChange}
-                disable={true}
+                value={email}
+                disabled={true}
               />
             </FormControl>
 
@@ -107,17 +84,12 @@ export default function Registration () {
               <FormLabel>Nickname</FormLabel>
               <Input type="Nickname"
                 name='nickname'
-                value={form.nickname}
-                onChange={handleChange} />
+                onChange={(e) => setNickname(e.target.value)}
+              />
+
             </FormControl>
             <Stack spacing={10}>
-              <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align={'start'}
-                justify={'space-between'}>
-                <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
-              </Stack>
+
               <Button
                 type='button'
                 onClick={handleClick}

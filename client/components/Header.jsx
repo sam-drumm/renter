@@ -3,8 +3,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Breadcrumb, Image, BreadcrumbItem, BreadcrumbLink, useDisclosure, Text, Flex, Box, Stack } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
+import { Breadcrumb, Image, BreadcrumbItem, BreadcrumbLink, useDisclosure, Text, Flex, Box, Stack, Link, Grid, GridItem } from '@chakra-ui/react'
 import { BiChevronRight } from 'react-icons/bi'
 import { FcCollapse, FcMenu } from 'react-icons/fc'
 
@@ -15,6 +15,7 @@ function Nav () {
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
+  const navigate = useNavigate()
 
   function handleLogin (event) {
     event.preventDefault()
@@ -35,30 +36,45 @@ function Nav () {
     <Flex
       position={'sticky'}
     >
-      <Image src='./images/RenterFinal-bgRemoved.png' alt="renterlogo" boxSize='150px'/>
+      <Link onClick={() => navigate('./')}>
+        <Image src='./images/RenterFinal-bgRemoved.png' alt="renterlogo"
+          boxSize={{ base: '75', md: '125' }}
+        />
+      </Link>
 
       <Stack
         display={{ base: isOpen ? 'block' : 'none', md: 'flex' }}
         flexGrow={1}
         direction={{ base: 'column-reverse', md: 'row-reverse' }}
+        objectFit='cover'
         width={{ base: 'full', md: 'auto' }}
+        mr={3}
       >
 
         <IfAuthenticated>
-          <Text fontSize='2xl' color='pink' display='flex' mx={10}>Welcome {user.nickname}!</Text>
-
-          <Breadcrumb color='teal' fontSize='2xl' separator={<BiChevronRight color='pink' />}
+          <Grid
+            templateRows='repeat(2, .1fr)'
           >
-            <BreadcrumbItem>
-              <BreadcrumbLink as={Link} to='/'>Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink as={Link} to='/rentalform'>Renter Form</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink as={Link} to='/' onClick={handleLogoff}>Log out</BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
+            <GridItem rowSpan={1}>
+              <Text fontSize='2xl' color='pink' display='flex'>Welcome {user.nickname}!</Text>
+            </GridItem>
+
+            <GridItem rowSpan={1}>
+              <Breadcrumb color='teal' fontSize='2xl' separator={<BiChevronRight color='pink' />}
+              >
+                <BreadcrumbItem>
+                  <BreadcrumbLink as={Link} to='/'>Home</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbItem>
+                  <BreadcrumbLink as={Link} to='/rentalform'>Renter Form</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbItem>
+                  <BreadcrumbLink as={Link} to='/' onClick={handleLogoff}>Log out</BreadcrumbLink>
+                </BreadcrumbItem>
+              </Breadcrumb>
+            </GridItem>
+
+          </Grid>
         </IfAuthenticated>
 
         <IfNotAuthenticated>

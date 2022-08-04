@@ -4,34 +4,39 @@ import { useSelector } from 'react-redux'
 // import { useNavigate } from 'react-router-dom'
 // import { setWaiting, clearWaiting } from '../actions/waiting'
 // import AlertMessage from './AlertMessage'
-import Footer from './Footer'
+// import Footer from './Footer'
 import {
   FormControl,
   FormLabel,
+  FormErrorMessage,
   Input,
   Select,
   Radio,
   RadioGroup,
-  Stack
+  Stack,
+  CheckboxGroup,
+  Checkbox,
+  Button,
+  InputGroup,
+  InputLeftAddon
 } from '@chakra-ui/react'
-import { useFormik, Field } from 'formik'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
-
 
 const registerSchema = Yup.object().shape({
   address: Yup.string()
     .min(3, 'This must be at least 3 characters long')
     .max(50, 'Sorry, this must be under 50 characters long')
     .required('Required'),
-  roomsRented: Yup.string()
+  roomsRented: Yup.number()
     .min(1, 'This must be at least 3 characters long')
     .max(5, 'Sorry, this must be under 50 characters long')
     .required('Required'),
-  roomsTotal: Yup.string()
+  roomsTotal: Yup.number()
     .min(1, 'This must be at least 3 characters long')
     .max(54, 'Sorry, this must be under 50 characters long')
     .required('Required'),
-  rentTotal: Yup.string()
+  rentTotal: Yup.number()
     .min(1, 'This must be at least 3 characters long')
     .max(54, 'Sorry, this must be under 50 characters long')
     .required('Required'),
@@ -47,9 +52,9 @@ const registerSchema = Yup.object().shape({
     .min(1, 'This must be at least 3 characters long')
     .max(54, 'Sorry, this must be under 50 characters long')
     .required('Required'),
-  rentIncrease: Yup.string()
+  rentIncrease: Yup.number()
     .min(1, 'This must be at least 3 characters long')
-    .max(54, 'Sorry, this must be under 50 characters long')
+    .max(1000, 'Sorry, this must be under 50 characters long')
     .required('Required'),
   averageIncrease: Yup.string()
     .min(1, 'This must be at least 3 characters long')
@@ -150,68 +155,75 @@ function RentalForm () {
   return (
 
     <div className='form-box'>
-      <h1>Rental Form</h1>
-      <h4 className='form-title'>Please fill in this form to add to the Renter database.</h4>
+
+      <h1>Add a Rental Property</h1>
+      <h4>Please fill in this form to add to the Renter database.</h4>
 
       <form onSubmit={formik.handleSubmit}>
-        <FormControl>
-          <FormLabel>Address
+
+        <FormControl isInvalid={formik.errors.address}>
+          <FormLabel>
             <Input
               type="text"
               id="address"
-              placeholder="Please enter the rental address"
+              placeholder="Please search for the property address"
               {...formik.getFieldProps('address')}
             />
           </FormLabel>
-          {/* <FormHelperText>12 Richmond Road, Ponsonby, Auckland</FormHelperText> */}
+          <FormErrorMessage>{formik.touched.address && formik.errors.address}</FormErrorMessage>
         </FormControl>
 
-        <h2>Rental details</h2>
+        <h2>Property details</h2>
+        <Stack direction={['column', 'row']} width="75%">
 
-        <FormControl>
-          <FormLabel>I rent
-            <Select
-              id='roomsRented'
-              {...formik.getFieldProps('roomsRented')}
-            >
-              <option value="">---</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </Select>
+          <FormControl>
+            <FormLabel>I rent
+              <Select
+                id='roomsRented'
+                {...formik.getFieldProps('roomsRented')}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Select>
+            </FormLabel>
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>out of
+              <Select
+                id='roomsTotal'
+                {...formik.getFieldProps('roomsTotal')}
+              >
+                <option value="">---</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Select>
+              <label>
+              rooms in the house.
+              </label>
+            </FormLabel>
+          </FormControl>
+        </Stack>
+
+        <FormControl isInvalid={formik.errors.rentTotal}>
+          <FormLabel>Rent per week:
+            <InputGroup>
+              <InputLeftAddon children='$'/>
+              <Input
+                id='rentTotal'
+                type='number'
+                placeholder='Enter the rent you pay'
+                {...formik.getFieldProps('rentTotal')}
+              />
+            </InputGroup>
           </FormLabel>
-        </FormControl>
-
-        <FormControl>
-          <FormLabel>out of
-            <Select
-              id='roomsTotal'
-              {...formik.getFieldProps('roomsTotal')}
-            >
-              <option value="">---</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </Select>
-          </FormLabel>
-        </FormControl>
-
-        <label>
-              rooms in total.
-        </label>
-
-        <FormControl>
-          <FormLabel>Total rent per week
-            <Input
-              id='rentTotal'
-              type='number'
-              {...formik.getFieldProps('rentTotal')}
-            />
-          </FormLabel>
+          <FormErrorMessage>{formik.touched.rentTotal && formik.errors.rentTotal}</FormErrorMessage>
         </FormControl>
 
         <FormControl>
@@ -230,55 +242,53 @@ function RentalForm () {
         </FormControl>
 
         <label>
-          <p></p>
             Length of tenancy
         </label>
 
-        <FormControl>
-          <FormLabel>Started in
-            <Select
-              id='startYear'
-              {...formik.getFieldProps('startYear')}
-            >
-              <option value="2013">2013</option>
-              <option value="2014">2014</option>
-              <option value="2015">2015</option>
-              <option value="2016">2016</option>
-              <option value="2017">2017</option>
-              <option value="2018">2018</option>
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-            </Select>
-          </FormLabel>
-        </FormControl>
+        <Stack direction={['column', 'row']} width="75%">
 
-        <label>
-            to
-        </label>
+          <FormControl>
+            <FormLabel>Started in
+              <Select
+                id='startYear'
+                {...formik.getFieldProps('startYear')}
+              >
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+              </Select>
+            </FormLabel>
+          </FormControl>
 
-        <FormControl>
-          <FormLabel>
-            <Select
-              id='endYear'
-              {...formik.getFieldProps('endYear')}
-            >
-              <option value="2013">2013</option>
-              <option value="2014">2014</option>
-              <option value="2015">2015</option>
-              <option value="2016">2016</option>
-              <option value="2017">2017</option>
-              <option value="2018">2018</option>
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-            </Select>
-          </FormLabel>
-        </FormControl>
+          <FormControl>
+            <FormLabel>till
+              <Select
+                id='endYear'
+                {...formik.getFieldProps('endYear')}
+              >
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+              </Select>
+            </FormLabel>
+          </FormControl>
+        </Stack>
 
         <FormControl>
           <FormLabel>Who was the rental property managed by?
@@ -296,8 +306,9 @@ function RentalForm () {
         </FormControl>
 
         <FormControl>
-          <FormLabel>
+          <FormLabel>How often was the rent increased?
             <Select
+
               id='rentIncrease'
               {...formik.getFieldProps('rentIncrease')}
             >
@@ -310,18 +321,40 @@ function RentalForm () {
         </FormControl>
 
         <FormControl>
-          <FormLabel> What was the average rent increase?
-            <Input
-              id='averageIncrease'
-              type='number'
-              {...formik.getFieldProps('averageIncrease')}
-            />
+          <FormLabel>Average rent increase:
+            <InputGroup>
+              <InputLeftAddon children='$'/>
+              <Input
+                id='averageIncrease'
+                type='number'
+                {...formik.getFieldProps('averageIncrease')}
+              />
+            </InputGroup>
           </FormLabel>
         </FormControl>
 
-        <h2>Amenities</h2>
-        <ul>
+        <FormControl>
+          <FormLabel> Amenities
+            <CheckboxGroup>
+              <Stack spacing={[1, 5]} direction={['column', 'row']}>
+                <Checkbox value='heatPump' {...formik.getFieldProps('amenities')}>
+              Heat Pump
+                </Checkbox>
+                <Checkbox value='heatPump' {...formik.getFieldProps('amenities')}>
+              Heat Pump
+                </Checkbox>
+                <Checkbox value='mole' {...formik.getFieldProps('amenities')}>
+              mole
+                </Checkbox>
+                <Checkbox value='curry' {...formik.getFieldProps('amenities')}>
+              curry
+                </Checkbox>
+              </Stack>
+            </CheckboxGroup>
+          </FormLabel>
+        </FormControl>
 
+        {/*
           <li>
             <label>
               <Field type="checkbox" name="amenities" value='heatPump'/>
@@ -401,7 +434,7 @@ function RentalForm () {
                 Subletting
             </label>
           </li>
-        </ul>
+        </ul> */}
 
         <h3>Relationship with landlord/property manager</h3>
 
@@ -454,17 +487,10 @@ function RentalForm () {
           </FormLabel>
         </FormControl>
 
-        <button className='submit'>
+        <Button className='submit'>
         Submit
-        </button>
+        </Button>
       </form>
-
-      <div className='disclaimer'>
-        Disclaimer:
-        <p>Length of tenancy is for internal use only to verify that the data remains up to date and within the last 5 years</p>
-      </div>
-
-      <Footer/>
     </div>
 
   )
